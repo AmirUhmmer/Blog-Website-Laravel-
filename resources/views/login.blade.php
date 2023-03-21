@@ -8,13 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @vite('resources/css/app.css')
+    @include('sweetalert::alert')
 </head>
 <body class="w-screen h-screen bg-dark_red dark:bg-verydark_red" >
-    {{-- style="background-image: url('illus/books.jpg');"   --}}
-    <!-- background-size: cover; -->
+
+    @if(session('error_login'))
+    <script>
+        Swal.fire({
+            title: 'Error',
+            text: '{{ session('error_login') }}',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
     
     <div class="fixed pt-11 pl-7 text-white text-base hover:text-lg md:text-3xl hover:cursor-pointer md:hover:text-4xl transition-all duration-150">
         <a onclick="goBack()">&lt- Go back</a>
@@ -25,7 +34,8 @@
                 <img src="illus/cahp.jpg" class="mx-auto rounded-xl h-[180px] w-11/12 md:w-[500px]">
             </div>
             <div class="mx-auto mt-2 h-fit w-11/12 md:w-[500px] shadow-lg bg-black bg-opacity-50 dark:bg-white dark:bg-opacity-10 shadow-black rounded-lg p-8 flex-col">
-                <form action="" id="login" method="POST">
+                <form action="loginUser" id="login" method="POST">
+                    @csrf
                     <div class="pt-2"> 
                         <span class="text-whish font-extrabold text-xl md:text-2xl">Username</span>
                     </div>

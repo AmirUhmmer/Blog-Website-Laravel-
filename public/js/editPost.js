@@ -4,20 +4,16 @@ function showEditPost(button){
     $('#userTable').hide()
     $('#goTop').hide()
 
-    // Get the data attributes from the button element
-    var title = button.dataset.titleedit;
-    var content = button.dataset.contentedit;
-    var picture = button.dataset.pictureedit;
-    var id = button.dataset.idedit;
-    
-    document.getElementById('titleToEdit').value = title
-    document.getElementById('contentToEdit').value = content
-    document.getElementById('idEdit').value = id
+    var id = element.getAttribute('data-idEdit');
+    var title = element.getAttribute('data-titleEdit');
+    var content = element.getAttribute('data-contentEdit');
+    var picture = element.getAttribute('data-pictureEdit');
 
-    //pic preview
-    document.getElementById("previewPicEdit").src = picture;
-    document.getElementById("origPic").value = picture;
-
+    // Populate the form fields with the values
+    document.getElementById('idToEdit').value = id;
+    document.getElementById('titleToEdit').value = title;
+    document.getElementById('contentToEdit').value = content;
+    document.getElementById('previewPicEdit').src = picture;
 }
 
 function cancelButtonEdit(){

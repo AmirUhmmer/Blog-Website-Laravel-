@@ -8,7 +8,7 @@ use App\Models\Posts;
 class AllPost extends Controller
 {
     public function DisplayAllPost(){
-        $postData = Posts::all();
+        $postData = Posts::where('deleted', '0')->get();
 
         return view('post', ['postData' => $postData]);
     }

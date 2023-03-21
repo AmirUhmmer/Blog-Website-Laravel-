@@ -10,8 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
+    @include('sweetalert::alert')
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-verydark_red dark:text-whish">
+    @if(session('success_signup'))
+    <script>
+        Swal.fire({
+            title: 'Success',
+            text: '{{ session('success_signup') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
+
+    @if(session('success_login'))
+    <script>
+        Swal.fire({
+            title: 'Success',
+            text: '{{ session('success_login') }}',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
+
     <header class="border-gray-300 border-b h-20 flex justify-between px-4 font-sans font-bold z-10">
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="index">
@@ -22,12 +45,10 @@
         </div>
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
-            @if ($users != null)
-                @foreach ($users as $user)
+            @if (session('username'))
                     <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                        {{ $user->username }}
+                        {{ session('username') }}
                     </a>
-                @endforeach
             @else
                 <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
             @endif
