@@ -9,10 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
 </head>
 <body class="font-sans font-bold min-h-screen mb-[50px] dark:bg-verydark_red dark:text-white">
+
+    @extends('user_profile.alerts')
+    @section('content')
+    @endsection
+
     <header class="border-gray-300 border-b h-14 md:h-20 flex justify-between px-4 font-sans font-bold">
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="">
@@ -66,10 +72,10 @@
                         data-pictureEdit="{{ $post->picture }}">
                         </td>
                         <td class="md:w-1/6 md:pr-20"><input onclick="deleteButton(this)" type="button" name="delete" value="Delete" class="rounded-md text-whish bg-red h-[40px] w-[100px] dark:hover:text-whish hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-red transition-all duration-150" 
-                        data-id="'.$row_data["id"].'" 
-                        data-title="'.$row_data["title"].'" 
-                        data-content="'.htmlspecialchars($row_data["content"]).'" 
-                        data-picture="'.$row_data["picture"].'">
+                        data-id="{{ $post->id }}"
+                        data-title="{{ $post->title }}" 
+                        data-content="{{ $post->content }}" 
+                        data-picture="{{ $post->picture }}">
                         </td>
                         </tr>
                         @endforeach
@@ -82,48 +88,12 @@
             </table>
         </div>
         
+        @extends('user_profile.edit_delete_form')
+        @section('addForm')
+        @endsection
 
-        <div id="addPostInput" class="hidden">
-            <div class="md:pt-14 md:ml-60"><span class="text-2xl">Add a story</span></div>
-            <div class="md:pt-10 md:ml-60 absolute">
-                <form enctype="multipart/form-data" action="addPost" method="POST" id="addPostForm">
-                    <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
-                    <div><input type="text" id="titleToAdd" name="title" placeholder="Title" class="rounded-md border-[1px] dark:bg-red border-gray-500 ml-3 md:ml-0 w-11/12 md:w-[754px] h-10 text-lg" required></div>
-                    <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>
-                    <div class="pt-2"><textarea id="contentToAdd" name="content" placeholder="Content" rows="10" 
-                        class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-red" required></textarea></div>
-                    <div class="pt-6 ml-3 md:ml-0"><span>Upload picture for your blog</span></div>
-                    <div class="pt-2 ml-3 md:ml-0"><input type="file" name="picture" id="picture" required onchange="previewImageAdd(event)"></div>
-                    <img src="" id="previewPicAdd" class="w-11/12 md:w-96 md:pl-4 pt-5 mx-auto md:mx-0">
-                    <div class="flex">
-                        <div class="pt-7 ml-3 md:ml-0"><input type="submit" name="submit" class="rounded-md text-whish dark:hover:text-whish bg-green-600 h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150"></div>
-                        <div class="pt-7 md:pl-96 pl-36"><input onclick="cancelButton()" type="button" name="cancel" value="Cancel" class="rounded-md text-whish dark:hover:text-whish bg-red h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-red transition-all duration-150"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="editPost" class="hidden">
-            <div class="md:pt-14 md:ml-60"><span class="text-2xl">Edit your post</span></div>
-            <div class="md:pt-10 md:ml-60 absolute">
-                <form enctype="multipart/form-data" action="" method="POST" id="editPostForm">
-                    <input type="hidden" name="idEdit" id="idEdit">
-                    <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
-                    <div><input type="text" id="titleToEdit" name="titleToEdit" placeholder="Title" class="rounded-md border-[1px] dark:bg-red border-gray-500 ml-3 md:ml-0 w-11/12 md:w-[754px] h-10 text-lg" required></div>
-                    <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>
-                    <div class="pt-2"><textarea id="contentToEdit" name="contentToEdit" placeholder="Content" rows="10" 
-                        class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-red" required></textarea></div>
-                    <div class="pt-6 ml-3 md:ml-0"><span>Upload picture for your blog</span></div>
-                    <input type="file" name="pictureToEdit" id="pictureToEdit" class="cursor-pointer pt-2 ml-3 md:ml-0" onchange="previewImageEdit(event)">
-                    <img src="" id="previewPicEdit" id="picturePicEdit" class="w-11/12 md:w-96 md:pl-4 pt-5 mx-auto md:mx-0">
-                    <input type="hidden" id="origPic" name="origPic" class="w-96 pl-4">
-                    <div class="flex">
-                        <div class="pt-7 ml-3 md:ml-0"><input type="submit" name="submit" class="rounded-md text-whish dark:hover:text-whish bg-green-600 h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150"></div>
-                        <div class="pt-7 md:pl-96 pl-36"><input onclick="cancelButtonEdit()" type="button" name="cancel" value="Cancel" class="rounded-md text-whish dark:hover:text-whish bg-red h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-red transition-all duration-150"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        @section('editForm')
+        @endsection
 
 
     <img src="dp/up-arrows.png" onclick="scrollToTop()" id="goTop" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">

@@ -21,9 +21,15 @@
             </a>     
         </div>
         <div class="font-mono md:text-2xl text-sm flex items-center">
-            <a href="{{ url('post') }}" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
-            <a id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue"></a>
-            <img src="../illus/moon.png" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
+            <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
+            @if (session('username'))
+                    <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                        {{ session('username') }}
+                    </a>
+            @else
+                <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
+            @endif
+            <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
             <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
         </div>
     </header>
@@ -61,8 +67,8 @@
                     <img src="../dp/twitter.png" class="h-10 pr-8 hover:cursor-pointer">
                 </div>
                 <div class="pt-4 -ml-5">
-                    <a href="" class="text-xl pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a><span>|</span>
-                    <a href="post.html" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a><span>|</span>
+                    <a href="{{ url('index') }}" class="text-xl pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a><span>|</span>
+                    <a href="{{ url('post') }}" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a><span>|</span>
                     <a onclick="scrollToTop()" class="text-xl pr-3 pl-3 hover:cursor-pointer scro hover:text-pink_red hover:underline decoration-light_blue">Back to Top</a>
                 </div>
                 <div class="pt-2 -ml-3">
@@ -73,8 +79,5 @@
     </footer>
 
     <script type="text/javascript" src="../js/ajax.js"></script>
-    {{-- <script type="text/javascript" src="js/userHeader.js"></script>
-    <script>showFullStory();</script>
-    <script>userHeader();</script> --}}
 </body>
 </html>

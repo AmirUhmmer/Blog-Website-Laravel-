@@ -13,27 +13,14 @@
     @include('sweetalert::alert')
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-verydark_red dark:text-whish">
-    @if(session('success_signup'))
-    <script>
-        Swal.fire({
-            title: 'Success',
-            text: '{{ session('success_signup') }}',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        })
-    </script>
-    @endif
 
-    @if(session('success_login'))
-    <script>
-        Swal.fire({
-            title: 'Success',
-            text: '{{ session('success_login') }}',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        })
-    </script>
-    @endif
+    @extends('index.index_alert')
+    @section('successSignUp')
+    @endsection
+
+    @section('successSignIn')
+    @endsection
+    
 
     <header class="border-gray-300 border-b h-20 flex justify-between px-4 font-sans font-bold z-10">
         <div class="font-mono md:text-2xl text-sm flex items-center">

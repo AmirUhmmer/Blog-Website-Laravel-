@@ -10,6 +10,8 @@ use App\Http\Controllers\SignIn;
 use App\Http\Controllers\logout;
 use App\Http\Controllers\userPosts;
 use App\Http\Controllers\AddPost;
+use App\Http\Controllers\EditPost;
+use App\Http\Controllers\DeletePost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,29 +42,24 @@ Route::get('/login', function() {
     return view('login');
 });
 
-Route::post('loginUser', [SignIn::class, 'login'], function(){
-});
+Route::post('loginUser', [SignIn::class, 'login']);
 
 Route::get('/signup', function() {
     return view('signup');
 })->name('signup');
 
-Route::post('insertUser', [SignUp::class, 'AddUser'], function(){
-});
+Route::post('insertUser', [SignUp::class, 'AddUser']);
 
 Route::get('/full_story/{post_id}', [FullStoryController::class, 'DisplayFullStory'], function () {
-    return view('full_story/{post_id}');
+    return view('/full_story')->with('post_id');
 })->name('full_story');
 
-Route::get('/user_profile', [userPosts::class, 'displayuserPosts'], function () {
-    
-});
+Route::get('/user_profile', [userPosts::class, 'displayuserPosts']);
 
-Route::get('/logout', [logout::class, 'logoutUser'], function () {
-    
-});
+Route::get('/logout', [logout::class, 'logoutUser']);
 
-Route::post('/addPost', [AddPost::class, 'AddPostDB'], function () {
-    
-});
+Route::post('/addPost', [AddPost::class, 'AddPostDB']);
 
+Route::post('/editPost', [EditPost::class, 'UpdateDB']);
+
+Route::get('/deletePost/{id}', [DeletePost::class, 'deleteDB'])->name('deletePost');
