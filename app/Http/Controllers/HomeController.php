@@ -9,7 +9,8 @@ use App\Models\Users;
 class HomeController extends Controller
 {
     public function IndexContent(){
-        $data = Posts::take(4)->get();
+        // $data = Posts::query()->paginate(3);
+        $data = Posts::where('deleted', '0')->get();
         $username = (isset($_SESSION['username']) ? Users::where('username', $_SESSION['username'])->get() : null);
         return view('index', 
         ['data' => $data,

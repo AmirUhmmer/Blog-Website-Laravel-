@@ -12,7 +12,7 @@
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
 </head>
-<body class="w-screen h-screen bg-dark_red dark:bg-verydark_red" >
+<body class="w-screen h-screen bg-card_dark dark:bg-main_dark" >
 
     @if(session('error_login'))
     <script>
@@ -25,33 +25,94 @@
     </script>
     @endif
     
-    <div class="fixed pt-11 pl-7 text-white text-base hover:text-lg md:text-3xl hover:cursor-pointer md:hover:text-4xl transition-all duration-150">
+    <div class="fixed md:pt-60 pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
         <a onclick="goBack()">&lt- Go back</a>
     </div>
+    <div class="pt-24 md:pt-72">
+        <div class="container max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
+            <div class="relative hidden xl:block xl:w-1/2 h-full">
+                <img
+                class="absolute w-full object-cover"
+                src="illus/white-ish.jpg"
+                />
+            </div>
+    <div class="w-full xl:w-1/2 p-8 dark:bg-card_dark">
+        <form method="post" action="#" onSubmit="return false">
+        <h1 class=" text-2xl font-bold dark:text-white">Sign in to your account</h1>
+        <div>
+            <span class="text-gray-600 text-sm dark:text-whish">
+            Don't have an account?
+            </span>
+            <span class="text-gray-700 text-sm font-semibold dark:text-whish">
+            Sign up
+            </span>
+        </div>
+        <div class="mb-4 mt-6">
+            <label
+            class="block text-gray-700 text-sm font-semibold mb-2 dark:text-whish"
+            >
+            Username
+            </label>
+            <input
+            class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline h-10"
+            id="email"
+            type="text"
+            placeholder="Your username"
+            />
+        </div>
+        <div class="mb-6 mt-6">
+            <label
+            class="block text-gray-700 text-sm font-semibold mb-2 dark:text-whish""
+            htmlFor="password"
+            >
+            Password
+            </label>
+            <input
+            class="text-sm bg-gray-200 appearance-none rounded w-full py-2 px-3 text-gray-700 mb-1 leading-tight focus:outline-none focus:shadow-outline h-10"
+            id="password"
+            type="password"
+            placeholder="Your password"
+            />
+        </div>
+        <div class="flex w-full mt-8">
+            <button
+            class="w-full bg-gray-800 dark:bg-gray-500 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
+            type="button"
+            >
+            Sign in
+            </button>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
 
-        <div class="flex-col">
+        {{-- <div class="flex-col">
             <div class="pt-24 md:pt-48">
                 <img src="illus/cahp.jpg" class="mx-auto rounded-xl h-[180px] w-11/12 md:w-[500px]">
             </div>
-            <div class="mx-auto mt-2 h-fit w-11/12 md:w-[500px] shadow-lg bg-black bg-opacity-50 dark:bg-white dark:bg-opacity-10 shadow-black rounded-lg p-8 flex-col">
+            <div class="mx-auto mt-2 h-fit w-11/12 md:w-[500px] shadow-lg bg-white bg-opacity-50 dark:bg-white dark:bg-opacity-10 shadow-black rounded-lg p-8 flex-col">
                 <form action="loginUser" id="login" method="POST">
                     @csrf
                     <div class="pt-2"> 
-                        <span class="text-whish font-extrabold text-xl md:text-2xl">Username</span>
+                        <span class="dark:text-whish font-extrabold text-xl md:text-2xl">Username</span>
                     </div>
                     <div class="pt-3">
-                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 text-whish focus:bg-transparent focus:outline-none" 
+                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 dark:text-whish focus:bg-transparent focus:outline-none" 
                         type="text" 
                         name="username" 
                         id="username" 
                         placeholder="Enter username" 
                         required>
                     </div>
+                    @error('username')
+                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="pt-7">
-                        <span class="text-whish font-extrabold text-xl md:text-2xl">Password</span>
+                        <span class="dark:text-whish font-extrabold text-xl md:text-2xl">Password</span>
                     </div>
                     <div class="flex pt-3">
-                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 text-whish focus:bg-transparent focus:outline-none" 
+                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 dark:text-whish focus:bg-transparent focus:outline-none" 
                         type="password" 
                         name="password" 
                         id="password" 
@@ -59,15 +120,20 @@
                         required>
                         <img src="dp/eye.png" id="togglePassword" class="w-7 ml-4 relative">
                     </div>
+                    @error('password')
+                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="pt-5">
-                        <a href="signup" class="text-whish font-extrabold hover:cursor-pointer hover: text-sm md:text-base hover:text-blue-500 hover:underline decoration-blue-500">Sign Up</a>
+                        <a href="signup" class="dark:text-whish font-extrabold hover:cursor-pointer hover: text-sm md:text-base hover:text-blue-500 hover:underline decoration-blue-500">Sign Up</a>
                     </div>
                     <div class="pt-7 mx-16 md:mx-32">
-                        <input type="submit" name="submit" value="Login" class="w-40 h-11 bg-white bg-opacity-70 rounded-xl hover:cursor-pointer hover:bg-opacity-95 transition-all duration-150">
+                        <input type="submit" name="submit" value="Login" class="w-40 h-11 dark:bg-white bg-green-500 bg-opacity-70 rounded-xl hover:cursor-pointer hover:bg-opacity-95 transition-all duration-150">
                     </div>
                     </form>
             </div>
-        </div>
+        </div> --}}
+
+        
         
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>

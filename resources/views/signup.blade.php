@@ -34,28 +34,28 @@
                     </div>
                     <div class="pt-3">
                         <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 text-whish focus:bg-transparent focus:outline-none" 
-                        minlength="2"
-                        maxlength="20"
                         type="text" 
                         name="username" 
                         id="username" 
-                        placeholder="Enter username" 
-                        required>
+                        placeholder="Enter username">
                     </div>
+                    @error('username')
+                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="pt-7">
                         <span class="text-whish font-extrabold text-xl md:text-2xl">Password</span>
                     </div>
                     <div class="flex pt-3">
                         <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 text-whish focus:bg-transparent focus:outline-none" 
-                        minlength="2"
-                        maxlength="20"
                         type="password" 
                         name="password" 
                         id="password" 
-                        placeholder="Password" 
-                        required>
+                        placeholder="Password">
                         <img src="dp/eye.png" id="togglePassword" class="w-7 ml-4 relative">
                     </div>
+                    @error('password')
+                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="pt-7">
                         <span class="text-whish font-extrabold text-xl md:text-2xl">Confirm Password</span>
                     </div>
@@ -68,6 +68,9 @@
                         required>
                         <img src="dp/eye.png" id="togglePassword1" class="w-7 ml-4 relative">
                     </div>
+                    @error('password_verify')
+                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="pt-5">
                         <a href="login.html" class="text-whish font-extrabold hover:cursor-pointer hover: text-sm md:text-base hover:text-blue-500 hover:underline decoration-blue-500">Sign In</a>
                     </div>

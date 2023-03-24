@@ -6,11 +6,11 @@
             <div class="md:flex">
                 <div>
                     <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
-                    <div><input type="text" id="titleToAdd" name="title" placeholder="Title" class="rounded-md border-[1px] dark:bg-red
+                    <div><input type="text" id="titleToAdd" name="title" placeholder="Title" class="rounded-md border-[1px] dark:bg-card_dark
                          border-gray-500 ml-3 md:ml-0 w-11/12 md:w-[754px] h-10 text-lg" required></div>
                     <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>
                     <div class="pt-2"><textarea id="contentToAdd" name="content" placeholder="Content" rows="10" 
-                        class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-red" required></textarea></div>
+                        class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-card_dark" required></textarea></div>
                     <div class="hidden md:flex">
                         <div class="pt-7 ml-3 md:ml-0"><input type="submit" name="submit" class="rounded-md text-whish dark:hover:text-whish bg-green-600 h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150"></div>
                         <div class="pt-7 md:pl-96 pl-36"><input onclick="cancelButton()" type="button" name="cancel" value="Cancel" class="rounded-md text-whish dark:hover:text-whish bg-red h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-red transition-all duration-150"></div>
@@ -44,11 +44,11 @@
             <div class="md:flex">
                 <div>
                     <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
-                    <div><input type="text" id="titleToEdit" name="titleToEdit" placeholder="Title" class="rounded-md border-[1px] dark:bg-red 
+                    <div><input type="text" id="titleToEdit" name="titleToEdit" placeholder="Title" class="rounded-md border-[1px] dark:bg-card_dark 
                     border-gray-500 ml-3 md:ml-0 w-11/12 md:w-[754px] h-10 text-lg" required></div>
                     <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>
                     <div class="pt-2"><textarea id="contentToEdit" name="contentToEdit" placeholder="Content" rows="10" 
-                    class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-red" required></textarea></div>
+                    class="ml-3 md:ml-0 resize-y rounded-md border-[1px] border-gray-500 w-11/12 md:w-[755px] dark:bg-card_dark" required></textarea></div>
 
                     <div class="hidden md:flex">
                         <div class="pt-7 ml-3 md:ml-0"><input type="submit" name="submit" class="rounded-md text-whish dark:hover:text-whish bg-green-600 h-[40px] w-[100px] hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150"></div>

@@ -8,10 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
 </head>
-<body class="font-sans font-bold min-h-screen dark:bg-verydark_red dark:text-white">
+<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-white">
     <header class="border-gray-300 border-b h-20 flex justify-between px-4 font-sans font-bold">
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="{{ url('index') }}">
@@ -22,9 +24,9 @@
         </div>
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="{{ url('index') }}" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a>
-            @if (session('username'))
+            @if (auth()->user())
                     <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                        {{ session('username') }}
+                        {{ auth()->user()->username }}
                     </a>
             @else
                 <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -36,9 +38,14 @@
     
     <div class="mt-7 ml-5 md:ml-96 font-extrabold md:text-xl">
         <span class="">POSTS</span>
+
+        <div>
+            {{ $postData->links()}}
+        </div>
+         
     </div>
 
-    <div id="postSnippets">  
+    {{-- <div id="postSnippets">  
         @foreach ($postData as $post)
         <div class="mx-auto mt-4 w-11/12 md:h-fit md:w-[1160px] border-2 border-solid dark:bg-dark_red border-white shadow-black shadow-lg rounded-lg p-8 text-black">
             <span class="md:ml-1 text-sm md:text-base dark:text-whish">{{ $post->created_at}}</span>
@@ -55,12 +62,32 @@
             </div>
         </div>
         @endforeach
-    </div>
+    </div> --}}
+
+    <section id="postSnippets" class="w-full md:w-2/4 flex flex-col items-center px-3 mx-auto"> 
+        @foreach ($postData as $post)
+            <article class="flex flex-col shadow my-4">
+                <!-- Article Image -->
+                <a class="">
+                    <img src="{{$post->picture}}" class="w-full max-h-[600px] object-cover rounded-t-lg">
+                </a>
+                <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
+                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title}}</a>
+                    <p href="#" class="text-sm pb-3">
+                        By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ $post->created_at}}
+                    </p>
+                    <a  class="pb-6">{{ substr($post->content, 0, 300)}}..</a>
+                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-light fa-arrow-right fa-fade"></i></i></a>
+                </div>
+            </article>
+        @endforeach
+    </section>
+
 
     <img src="dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
 
     <footer class="pt-14 md:pt-20 ">
-        <div class="bg-slate-300 dark:bg-dark_red w-full pb-0 h-36 mx-auto flex justify-center">
+        <div class="bg-slate-300 dark:bg-card_dark w-full pb-0 h-36 mx-auto flex justify-center">
             <div class="flex-col pt-7">
                 <div class="flex items-center">
                     <img src="dp/facebook.png" class="h-10 pr-8 hover:cursor-pointer">

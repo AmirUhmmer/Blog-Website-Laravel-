@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShowPostSnippets;
 use App\Http\Controllers\AllPost;
 use App\Http\Controllers\FullStoryController;
@@ -39,14 +40,20 @@ Route::get('/post', [AllPost::class, 'DisplayAllPost'], function () {
 });
 
 Route::get('/login', function() {
+    // if(session('username') != null){
+    //     return redirect('/index');
+    // }
     return view('login');
-});
+})->middleware('guest')->name('login');
 
-Route::post('loginUser', [SignIn::class, 'login']);
+Route::post('loginUser', [AuthController::class, 'login']);
 
 Route::get('/signup', function() {
+    // if(session('username') != null){
+    //     return redirect('/index');
+    // }
     return view('signup');
-})->name('signup');
+})->name('signup')->middleware('guest');
 
 Route::post('insertUser', [SignUp::class, 'AddUser']);
 
@@ -54,12 +61,12 @@ Route::get('/full_story/{post_id}', [FullStoryController::class, 'DisplayFullSto
     return view('/full_story')->with('post_id');
 })->name('full_story');
 
-Route::get('/user_profile', [userPosts::class, 'displayuserPosts']);
+Route::get('/user_profile', [userPosts::class, 'displayuserPosts'])->middleware('auth');
 
-Route::get('/logout', [logout::class, 'logoutUser']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::post('/addPost', [AddPost::class, 'AddPostDB']);
+Route::post('/addPost', [AddPost::class, 'AddPostDB'])->middleware('auth');
 
-Route::post('/editPost', [EditPost::class, 'UpdateDB']);
+Route::post('/editPost', [EditPost::class, 'UpdateDB'])->middleware('auth');
 
-Route::get('/deletePost/{id}', [DeletePost::class, 'deleteDB'])->name('deletePost');
+Route::get('/deletePost/{id}', [DeletePost::class, 'deleteDB'])->name('deletePost')->middleware('auth');

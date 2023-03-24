@@ -13,7 +13,7 @@
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
 </head>
-<body class="font-sans font-bold min-h-screen mb-[50px] dark:bg-verydark_red dark:text-white">
+<body class="font-sans font-bold min-h-screen mb-[50px] dark:bg-main_dark dark:text-white">
 
     @extends('user_profile.alerts')
     @section('content')
@@ -23,7 +23,7 @@
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="">
                 <span class="ml-5 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline">
-                Welcome <span id="username" class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">{{ session('username') }}</span>
+                Welcome <span id="username" class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">{{ auth()->user()->username }}</span>
                 </span>
             </a>     
         </div>

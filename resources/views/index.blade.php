@@ -12,7 +12,7 @@
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
 </head>
-<body class="font-sans font-bold min-h-screen dark:bg-verydark_red dark:text-whish">
+<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish">
 
     @extends('index.index_alert')
     @section('successSignUp')
@@ -32,9 +32,9 @@
         </div>
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
-            @if (session('username'))
+            @if (auth()->user())
                     <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                        {{ session('username') }}
+                        {{ auth()->user()->username }}
                     </a>
             @else
                 <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -53,12 +53,12 @@
         <img src="illus/Collab-pana.png" class="mx-auto md:ml-[900px] h-[400px] md:h-[800px]">
     </div>
 
-    <div class="ml-5 md:ml-60 font-extrabold md:text-xl">
+    <div class="ml-5 md:ml-60 font-extrabold md:text-xl pb-10">
         <span>FEATURED POSTS</span>
     </div>
 
     <div id="postSnippets" class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-14 md:pb-20"> 
-    @if(isset($data))
+    {{-- @if(isset($data))
         @foreach ($data as $post)       
             <div class="flex-col pt-4 md:ml-24 mx-auto md:mx-0">
                 <div>
@@ -80,11 +80,30 @@
                 </div>
             </div>
         @endforeach
+    @endif --}}
+    @if(isset($data))
+        @foreach ($data as $post)       
+        <div class="w-fit mx-auto">
+            <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
+                <a href="#">
+                    <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
+                </a>
+                <div class="p-5 dark:bg-card_dark">
+                    <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
+                    <p class="font-normal text-gray-700 mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
+                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+                        Read more
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endforeach
     @endif
     </div>
+    
 
     <footer>
-        <div class="bg-slate-300 dark:bg-dark_red w-full pb-0 h-36 mx-auto flex justify-center">
+        <div class="bg-slate-300 dark:bg-card_dark w-full pb-0 h-36 mx-auto flex justify-center">
             <div class="flex-col pt-7">
                 <div class="flex items-center">
                     <img src="dp/facebook.png" class="h-10 pr-8 hover:cursor-pointer">

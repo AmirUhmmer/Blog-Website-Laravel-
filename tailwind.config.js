@@ -26,6 +26,8 @@ module.exports = {
                 light_blue: '#80FFDB',
                 whish: '#F1FAEE',
                 card_white: '#f6f6f6',
+                main_dark: '#141414',
+                card_dark: '#202020'
             },
         },
     },
