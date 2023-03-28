@@ -8,10 +8,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
       screens: {
-        sm: '300px',
-        tb:  '760px',
-        md: '768px',
-        lg: '976px',
+        sm: '390px',
+        tb: '760px',
+        lt:  '1000px',
+        md: '1300px',
         xl: '1440px',
       },
       fontFamily: {

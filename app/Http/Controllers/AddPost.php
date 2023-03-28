@@ -9,6 +9,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AddPost extends Controller
 {
     public function AddPostDB (Request $request){
+
+        $request->validate([
+            'picture' => 'required|image',
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
         $title = $request->input('title');
         $content = $request->input('content');
         $fileName = time().$request->file('picture')->getClientOriginalName();

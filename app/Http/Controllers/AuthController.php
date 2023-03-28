@@ -25,6 +25,11 @@ class AuthController extends Controller
             Alert::success('Success Title', 'Success Message');
             return redirect('/index')->with('success_login', 'You have successfully signed in');
         }
+        else {
+            return back()->withErrors([
+                'password' => 'The password is incorrect.',
+            ]);
+        }
     }
 
     public function logout(Request $request){

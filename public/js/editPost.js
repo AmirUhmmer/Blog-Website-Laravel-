@@ -25,7 +25,7 @@ function cancelButtonEdit(){
     $('#caption1').show()
     $('#userTable').show()
     $('#goTop').show()
-
+    document.getElementById("pictureToEdit").value = "";
     
 }
 

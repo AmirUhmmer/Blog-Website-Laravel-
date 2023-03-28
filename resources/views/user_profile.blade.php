@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
 </head>
@@ -19,24 +21,50 @@
     @section('content')
     @endsection
 
-    <header class="border-gray-300 border-b h-14 md:h-20 flex justify-between px-4 font-sans font-bold">
-        <div class="font-mono md:text-2xl text-sm flex items-center">
-            <a href="">
-                <span class="ml-5 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline">
-                Welcome <span id="username" class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">{{ auth()->user()->username }}</span>
-                </span>
-            </a>     
+    <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
+        <div class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+            <div class="flex">
+                <div>
+                    <a href={{ url('index') }}>
+                        <span class="ml-5 tb:ml-16 lt:ml-48 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
+                        Write <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">Stuff</span>
+                        </span>
+                    </a>
+                </div>
+                    
+                <div>
+                    <a href="{{ url('post') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
+                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
+                </div>
+
+                <div>
+                    <a href="{{ url('logout') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
+                    hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Logout</a>
+                </div>
+
+                <div>
+                    <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                </div>
+            </div>
+           
         </div>
-        <div class="font-mono md:text-2xl text-sm flex items-center">
-            <a href="index" class="mr-8 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue transition-all duration-150">Home</a>
-            <a href="logout" class="md:mr-72 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Logout</a>
-            <img src="illus/moon.png" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
+        {{-- <div class="font-mono md:text-2xl text-sm flex items-center">
+            <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
+            @if (auth()->user())
+                    <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                        {{ auth()->user()->username }}
+                    </a>
+            @else
+                <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
+            @endif
+            <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
             <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
-        </div>
+        </div> --}}
     </header>
 
-        <div id="caption1" class="md:flex w-11/12 items-center">
-            <div class="pl-9 md:pl-60 pt-12 md:pt-11">
+        <div id="caption1" class="tb:flex w-11/12 items-center">
+            <div class="pl-9 lt:pl-60 pt-12 md:pt-11">
                 <span>Your Stories</span>
                 <div class="pt-3"><span>A compilation of chronicles authored by yourself</span></div>
             </div>
@@ -46,25 +74,25 @@
             </div>
         </div>
 
-        <div id="userTable" class="pt-20 md:pt-24">
+        <div id="userTable" class="pt-20 tb:pt-24">
             <table class="mx-auto w-11/12 md:w-5/6 table-auto">
                 <thead class="border-b-2 border-black dark:border-white text-md md:text-lg">
                     <tr>
                       <th class="pb-5">Title</th>
-                      <th class="pb-5 hidden md:table-cell">Content</th>
-                      <th class="pb-5 hidden md:table-cell">Picture</th>
+                      <th class="pb-5 hidden lt:table-cell">Content</th>
+                      <th class="pb-5 hidden lt:hidden tb:table-cell">Picture</th>
                     </tr>
                   </thead>
                   <tbody id="userPostsDisplay" class="mx-auto text-center items-center">
                     @if($posts->count())
                         @foreach($posts as $post)
                         <tr class="border-b-2 border-gray-600 dark:border-gray-400">
-                        <td id="title" class="md:w-">{{ $post->title }}</td>
-                        <td id="contentToDisplay" class=" md:max-w-[250px] hidden md:table-cell">
+                        <td id="title" class="">{{ $post->title }}</td>
+                        <td id="contentToDisplay" class=" md:max-w-[250px] hidden lt:table-cell">
                             {{ substr($post->content, 0, 120) }}...
                         </td>
                         <td id="content" class="md:w-auto hidden">{{ $post->content }}</td>
-                        <td id="pictureDB" class="hidden md:table-cell"><img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover"></td>
+                        <td id="pictureDB" class="hidden lt:hidden tb:table-cell"><img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover"></td>
                         <td class="md:w-1/6 md:pl-1"><input onclick="showEditPost(this)" type="button" name="edit" value="Edit" class="rounded-md text-whish bg-green-600 h-[40px] w-[100px] dark:hover:text-whish hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150" 
                         data-idEdit="{{ $post->id }}" 
                         data-titleEdit="{{ $post->title }}" 
@@ -100,9 +128,6 @@
 
     
     <script type="text/javascript" src="js/ajax.js"></script>
-            
-    <script type="text/javascript" src="js/username.js"></script>
-    <script>showUsername();</script>
 
     <script type="text/javascript" src="js/addPost.js"></script>
 
@@ -111,8 +136,7 @@
     <script type="text/javascript" src="js/editPost.js"></script>
     
     <script type="text/javascript" src="js/deleteButton.js"></script>
-
-    <script type="text/javascript" src="js/logout.js"></script>     
+   
     
 </body>
 </html>

@@ -46,4 +46,6 @@ function cancelButton(){
     $('#caption1').show()
     $('#userTable').show()
     $('#goTop').show()
+    document.getElementById("picture").value = "";
+    document.getElementById("previewPicAdd").src = "storage/pictures/insert_image.png";
 }

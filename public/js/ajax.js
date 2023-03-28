@@ -1,13 +1,3 @@
-function showPostSnippet(){
-    $.ajax({
-        type: 'GET',
-        url: 'php/post_snippet.php',
-        dataType: 'html',
-        success: function (data) {
-            $("#postSnippets").append(data);
-        }
-    })
-}
 
 function showFullStory(){
     
@@ -63,6 +53,10 @@ window.addEventListener('load', function () {
       htmlElement.classList.add('dark');
       $('#moon').hide();
       $('#sun').show();
+    }
+    else {
+        $('#moon').show();
+        $('#sun').hide();
     }
 
   });

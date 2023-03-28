@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Storage;
 class EditPost extends Controller
 {
     public function UpdateDB(Request $request){
+
+        $request->validate([
+            'pictureToEdit' => 'required|image',
+            'titleToEdit' => 'required',
+            'contentToEdit' => 'required'
+        ]);
+
         $id = $request->input('idEdit');
         $origPic = Posts::where('id', $id)->pluck('picture')->first();
 

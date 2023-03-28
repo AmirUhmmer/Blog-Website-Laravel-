@@ -16,11 +16,11 @@
 
     {{ $display = (isset($script) ? $script : null)}}
 
-    <div class="fixed md:pt-60 pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
+    <div class="fixed pl-5 pt-14 tb:pt-52 tb:pl-44 md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
         <a onclick="goBack()">&lt- Go back</a>
     </div>
-    <div class="pt-24 md:pt-72">
-        <div class="container max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
+    <div class="pt-24 tb:pt-64 md:pt-72">
+        <div class="container w-11/12 max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
             <div class="w-full xl:w-1/2 p-8 dark:bg-card_dark">
                 <form action="insertUser" id="signup" method="POST">
                     @csrf
@@ -87,7 +87,7 @@
                 </div>
                 </form>
             </div>
-            <div class="relative hidden xl:block xl:w-1/2 h-full">
+            <div class="relative hidden tb:block xl:w-1/2 h-full">
                 <img
                 class="absolute w-full object-cover"
                 src="illus/login.jpg"

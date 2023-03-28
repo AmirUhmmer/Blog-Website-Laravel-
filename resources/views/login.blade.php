@@ -25,12 +25,12 @@
     </script>
     @endif
     
-    <div class="fixed md:pt-60 pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
+    <div class="fixed pt-24 pl-5 sm:pt-32 sm:pl-5 tb:pt-60 tb:pl-16 md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
         <a onclick="goBack()">&lt- Go back</a>
     </div>
-    <div class="pt-24 md:pt-72">
-        <div class="container max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
-            <div class="relative hidden xl:block xl:w-1/2 h-full">
+    <div class="pt-32 sm:pt-40 tb:pt-72 md:pt-72">
+        <div class="container max-w-md mx-auto w-11/12 tb:max-w-2xl xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
+            <div class="relative hidden tb:block tb:w-1/2 h-full">
                 <img
                 class="absolute w-full object-cover"
                 src="illus/login1.jpg"
