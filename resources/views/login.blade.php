@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="w-screen h-screen bg-card_dark dark:bg-main_dark" >
 

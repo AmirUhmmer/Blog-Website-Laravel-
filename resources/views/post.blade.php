@@ -12,6 +12,7 @@
     />
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-white">
     <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">

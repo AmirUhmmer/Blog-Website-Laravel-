@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="font-sans font-bold min-h-screen overflow-auto dark:bg-main_dark dark:text-white">
     <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">

@@ -13,6 +13,7 @@
     />
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish">
 
