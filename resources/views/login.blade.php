@@ -26,7 +26,7 @@
     @endif
     
     <div class="fixed pt-24 pl-5 sm:pt-32 sm:pl-5 tb:pt-60 tb:pl-16 md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
-        <a onclick="goBack()">&lt- Go back</a>
+        <a href={{ url('index') }}>&lt- Go back</a>
     </div>
     <div class="pt-32 sm:pt-40 tb:pt-72 md:pt-72">
         <div class="container max-w-md mx-auto w-11/12 tb:max-w-2xl xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">

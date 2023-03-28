@@ -33,8 +33,8 @@
                 </div>
                     
                 <div>
-                    <a href="{{ url('post') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
-                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
+                    <a href="{{ url('index') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
+                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a>
                 </div>
 
                 <div>
@@ -80,7 +80,7 @@
                     <tr>
                       <th class="pb-5">Title</th>
                       <th class="pb-5 hidden lt:table-cell">Content</th>
-                      <th class="pb-5 hidden lt:hidden tb:table-cell">Picture</th>
+                      <th class="pb-5 hidden lt:hidden md:table-cell tb:table-cell">Picture</th>
                     </tr>
                   </thead>
                   <tbody id="userPostsDisplay" class="mx-auto text-center items-center">
@@ -92,7 +92,7 @@
                             {{ substr($post->content, 0, 120) }}...
                         </td>
                         <td id="content" class="md:w-auto hidden">{{ $post->content }}</td>
-                        <td id="pictureDB" class="hidden lt:hidden tb:table-cell"><img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover"></td>
+                        <td id="pictureDB" class="hidden lt:hidden md:table-cell tb:table-cell"><img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover"></td>
                         <td class="md:w-1/6 md:pl-1"><input onclick="showEditPost(this)" type="button" name="edit" value="Edit" class="rounded-md text-whish bg-green-600 h-[40px] w-[100px] dark:hover:text-whish hover:cursor-pointer hover:bg-transparent hover:text-black hover:border-[1px] hover:border-green-600 transition-all duration-150" 
                         data-idEdit="{{ $post->id }}" 
                         data-titleEdit="{{ $post->title }}" 
@@ -114,6 +114,12 @@
                     @endif
                   </tbody>
             </table>
+        </div>
+
+        <div class="tb:w-10/12 tb:pl-10 tb:pr-44 md:pr-0 md:mx-36 md:pl-20 pb-10 pt-10">
+            <div class="w-full tb:w-5/6 md:w-1/4 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
+                {{ $posts->links('vendor.pagination.tailwind') }}
+            </div>
         </div>
         
         @extends('user_profile.edit_delete_form')
