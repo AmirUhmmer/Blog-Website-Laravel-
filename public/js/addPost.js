@@ -39,9 +39,11 @@ function showAddPost(){
     $('#caption1').hide()
     $('#userTable').hide()
     $('#goTop').hide()
+    $('#pages').hide()
 }
 
 function cancelButton(){
+    $('#pages').show()
     $('#addPostInput').hide()
     $('#caption1').show()
     $('#userTable').show()

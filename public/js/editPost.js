@@ -4,6 +4,7 @@ function showEditPost(button){
     $('#caption1').hide()
     $('#userTable').hide()
     $('#goTop').hide()
+    $('#pages').hide()
 
    // Get the data attributes from the button element
    var title = button.dataset.titleedit;
@@ -21,6 +22,7 @@ function showEditPost(button){
 }
 
 function cancelButtonEdit(){
+    $('#pages').show()
     $('#editPost').hide()
     $('#caption1').show()
     $('#userTable').show()
