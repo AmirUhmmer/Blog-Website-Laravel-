@@ -38,12 +38,8 @@
     
     <div class="mt-7 ml-5 md:ml-96 font-extrabold md:text-xl">
         <span class="">POSTS</span>
-
-        <div>
-            {{ $postData->links()}}
-        </div>
-         
     </div>
+    
 
     {{-- <div id="postSnippets">  
         @foreach ($postData as $post)
@@ -77,11 +73,16 @@
                         By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ $post->created_at}}
                     </p>
                     <a  class="pb-6">{{ substr($post->content, 0, 300)}}..</a>
-                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-light fa-arrow-right fa-fade"></i></i></a>
+                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-solid fa-arrow-right fa-fade"></i></a>
                 </div>
             </article>
         @endforeach
+        <div class="w-full md:w-2/4 pt-5 -ml-[450px]">
+            {{ $postData->links('vendor.pagination.tailwind') }}
+        </div>
     </section>
+
+    
 
 
     <img src="dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">

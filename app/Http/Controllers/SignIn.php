@@ -27,11 +27,11 @@ class SignIn extends Controller
             Alert::success('Success Title', 'Success Message');
             return redirect('/index')->with('success_login', 'You have successfully signed in');
         }
-        
-        return back()->withErrors([
-            'password' => 'The password is incorrect.',
-        ]);
-        
+        else {
+            return back()->withErrors([
+                'password' => 'The password is incorrect.',
+            ]);
+        }
 
         // $username = $request->input('username');
         // $password = $request->input('password');

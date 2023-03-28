@@ -25,7 +25,7 @@
     <header class="border-gray-300 border-b h-20 flex justify-between px-4 font-sans font-bold z-10">
         <div class="font-mono md:text-2xl text-sm flex items-center">
             <a href="index">
-                <span class="ml-5 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline">
+                <span class="ml-5 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
                 Write <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">Stuff</span>
                 </span>
             </a>     
@@ -57,7 +57,7 @@
         <span>FEATURED POSTS</span>
     </div>
 
-    <div id="postSnippets" class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-14 md:pb-20"> 
+    <div id="postSnippets" class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
     {{-- @if(isset($data))
         @foreach ($data as $post)       
             <div class="flex-col pt-4 md:ml-24 mx-auto md:mx-0">
@@ -83,11 +83,9 @@
     @endif --}}
     @if(isset($data))
         @foreach ($data as $post)       
-        <div class="w-fit mx-auto">
+        <div class="w-11/12 md:w-fit mx-auto">
             <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
-                <a href="#">
-                    <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
-                </a>
+                <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
                 <div class="p-5 dark:bg-card_dark">
                     <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
                     <p class="font-normal text-gray-700 mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
@@ -100,6 +98,13 @@
         @endforeach
     @endif
     </div>
+
+    <div class="md:w-10/12 md:mx-36 md:pl-20 pb-14">
+        <div class="w-full md:w-1/4 flex-shrink-0">
+            {{ $data->links('vendor.pagination.tailwind') }}
+        </div>
+    </div>
+    
     
 
     <footer>

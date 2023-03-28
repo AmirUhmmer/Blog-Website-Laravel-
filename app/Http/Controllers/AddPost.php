@@ -16,7 +16,7 @@ class AddPost extends Controller
         $current_date_time = date('Y-m-d H:i:s', $current_timestamp);
 
         $addPostSuccess = Posts::insert([
-            'username'=>session('username'),
+            'username'=>auth()->user()->username,
             'title'=>$title,
             'content'=>$content,
             'picture'=>'storage/pictures/'.$fileName,

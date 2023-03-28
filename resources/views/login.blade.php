@@ -33,19 +33,20 @@
             <div class="relative hidden xl:block xl:w-1/2 h-full">
                 <img
                 class="absolute w-full object-cover"
-                src="illus/white-ish.jpg"
+                src="illus/login1.jpg"
                 />
             </div>
     <div class="w-full xl:w-1/2 p-8 dark:bg-card_dark">
-        <form method="post" action="#" onSubmit="return false">
+        <form action="loginUser" id="login" method="POST">
+            @csrf
         <h1 class=" text-2xl font-bold dark:text-white">Sign in to your account</h1>
         <div>
             <span class="text-gray-600 text-sm dark:text-whish">
             Don't have an account?
             </span>
-            <span class="text-gray-700 text-sm font-semibold dark:text-whish">
+            <a href="signup" class="text-gray-700 text-sm font-semibold dark:text-whish hover:underline transition-all duration-150">
             Sign up
-            </span>
+            </a>
         </div>
         <div class="mb-4 mt-6">
             <label
@@ -55,10 +56,14 @@
             </label>
             <input
             class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline h-10"
-            id="email"
+            id="username"
+            name="username"
             type="text"
             placeholder="Your username"
             />
+            @error('username')
+                <p class="text-pink_red font-bold text-xs mt-1">{{ $message }}</p>
+            @enderror
         </div>
         <div class="mb-6 mt-6">
             <label
@@ -69,18 +74,21 @@
             </label>
             <input
             class="text-sm bg-gray-200 appearance-none rounded w-full py-2 px-3 text-gray-700 mb-1 leading-tight focus:outline-none focus:shadow-outline h-10"
-            id="password"
+            name="password" 
+            id="password" 
             type="password"
             placeholder="Your password"
             />
+            @error('password')
+                <p class="text-pink_red font-bold text-xs mt-1">{{ $message }}</p>
+            @enderror
         </div>
         <div class="flex w-full mt-8">
-            <button
-            class="w-full bg-gray-800 dark:bg-gray-500 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
-            type="button"
+            <input
+            class="w-full bg-gray-800 hover:bg-opacity-80 dark:bg-gray-500 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10"
+            type="submit"
+            value="Sign in"
             >
-            Sign in
-            </button>
         </div>
         </form>
     </div>
