@@ -35,5 +35,8 @@ class AddPost extends Controller
             Alert::success('Success Title', 'Success Message');
             return redirect('user_profile')->with('success_add', 'Successfully added post');
         }
+        else{
+            return redirect('index');
+        }
     }
 } 

@@ -61,3 +61,36 @@ window.addEventListener('load', function () {
 
   });
 
+  function indexLoader(){
+    // Show the loader
+    $('#indexCardLoader').show();
+    $('#indexCaptionLoader').show();
+    $('#indexCaptionLoader1').show();
+    $('#headerLoader').show();
+  
+    // Hide the content
+    $('#indexCardContent').hide();
+    $('#indexCaptionContent').hide();
+    $('#indexCaptionContent1').hide();
+    $('#headerContent').hide();
+  
+    // Wait for the DOM to be ready
+    $(document).ready(() => {
+      setTimeout(function(){
+        // Hide the loader
+        $('#indexCardLoader').hide();
+        $('#indexCaptionLoader').hide();
+        $('#indexCaptionLoader1').hide();
+        $('#headerLoader').hide();
+  
+        // Show the content
+        $('#indexCardContent').show();
+        $('#indexCaptionContent').show();
+        $('#indexCaptionContent1').show();
+        $('#headerContent').show();
+      }, 1000);
+    });
+  }
+  
+  
+

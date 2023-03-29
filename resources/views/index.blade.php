@@ -26,7 +26,7 @@
     
 
     <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -58,23 +58,22 @@
                     <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
                 </div>
             </div>
-           
         </div>
-        {{-- <div class="font-mono md:text-2xl text-sm flex items-center">
-            <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
-            @if (auth()->user())
-                    <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                        {{ auth()->user()->username }}
-                    </a>
-            @else
-                <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
-            @endif
-            <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
-            <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
-        </div> --}}
+
+        <div id="headerLoader" class="hidden animate-pulse">
+            <div class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center pt-8">
+                <div class="ml-5 tb:ml-16 lt:ml-48 md:ml-56 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+                        
+                <div class="ml-24 tb:ml-80 lt:ml-[570px] md:ml-[950px] h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+
+                <div class="ml-5 sm:ml-3 tb:ml-10 lt:ml-7 md:ml-7 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+                        
+            </div>
+        </div>
+
     </header>
     
-    <div class="flex items-center h-fit z-0">
+    <div id="indexCaptionContent" class="flex items-center h-fit z-0">
         <span class="absolute text-center tb:text-xl tb:mx-32 tb:-mt-[480px] lt:mx-0 lt:text-left lt:-mt-72 -mt-64 md:text-3xl lt:left-20 md:left-52 md:-mt-80">
             Enjoy the thrill of sharing and reading outstanding content.</span>
         <span class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
@@ -84,51 +83,246 @@
         <img src="illus/Collab-pana.png" class="mx-auto object-cover lt:ml-[590px] md:ml-[900px] h-[400px] tb:h-[700px] md:h-[800px]">
     </div>
 
-    <div class="ml-5 md:ml-60 font-extrabold md:text-xl pb-10">
+    <div id="indexCaptionLoader" class="md:pt-52 animate-pulse hidden">
+        <div class="flex items-center h-fit z-0">
+            <div class="absolute md:w-[840px] text-center tb:text-xl tb:mx-32 tb:-mt-[480px] lt:mx-0 lt:text-left lt:-mt-72 -mt-64 md:text-3xl lt:left-20 md:left-52 md:-mt-80
+            h-8 rounded-full bg-gray-200 dark:bg-gray-700">
+                </div>
+            <div class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
+                <div class="flex items-center w-full space-x-2">
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 pt-2 max-w-[480px]">
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[400px] pt-2 ">
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[480px] pt-2 ">
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[440px] pt-2 ">
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[400px] pt-2 ">
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[480px] pt-2 ">
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                </div>
+                <div class="flex items-center w-full space-x-2 max-w-[440px] pt-2 ">
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                </div>
+            </div>
+            <svg class="mx-auto object-cover lt:ml-[590px] md:ml-[1100px] h-[400px] tb:h-[700px] md:h-[300px] text-gray-200 dark:text-gray-600"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                    <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                    435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                    480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                    486.1 .0006 456.1L0 456.1z"/></svg>
+            </svg>
+        </div>
+    </div>
+
+
+    <div id="indexCaptionContent1" class="ml-5 md:ml-60 font-extrabold md:text-xl pb-10">
         <span>FEATURED POSTS</span>
     </div>
 
-    <div id="postSnippets" class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
-    {{-- @if(isset($data))
-        @foreach ($data as $post)       
-            <div class="flex-col pt-4 md:ml-24 mx-auto md:mx-0">
-                <div>
-                    <img src="{{$post->picture}}" class="mx-auto rounded-xl h-[180px] w-11/12 md:w-[600px] object-cover">
-                </div>
-                <div class="mx-auto md:h-fit w-11/12 md:w-[600px] bg-card_white dark:bg-dark_red shadow-black shadow-lg rounded-lg p-8 text-black">
-                    <span class="md:ml-3 text-sm md:text-base dark:text-whish">{{$post->created_at}}</span>
-                    <div class="flex items-center text-sm md:text-base mt-2">
-                        <img src="dp/user_default.png" class="w-7 h-7 md:w-10 md:h-10 rounded-full">
-                        <span class="ml-2 dark:text-whish">{{$post->username}}</span>
-                    </div>  
-                    <div class="mt-2 text-lg font-extrabold md:text-3xl text-red dark:text-white"><span>{{$post->title}}</span></div>
-                    <div class="mt-4 text-sm md:text-base font-bold text-black">
-                        <span class="dark:text-card_white">{{substr($post->content, 0, 300)}}...</span>
-                    </div>
-                    <div class="mt-5 text-sm font-extrabold md:text-xl text-blue-500 decoration-blue-600 hover:cursor-pointer hover:text-2xl hover:underline transition-all duration-200">
-                        <a href="{{ route('full_story', ['post_id' => $post->id]) }}">Read Full</a>
+    <div id="indexCaptionLoader1" class="ml-5 md:ml-60 h-5 bg-gray-300 rounded-full dark:bg-gray-600 w-40 animate-pulse hidden"></div>
+
+    <div id="indexCardContent">
+        <div class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
+            @if($data->count())
+                @foreach ($data as $post)       
+                <div class="w-11/12 tb:w-fit mx-auto">
+                    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
+                        <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
+                        <div class="p-5 dark:bg-card_dark">
+                            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
+                            <p class="font-normal text-gray-700 mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
+                            <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+                                Read more
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    @endif --}}
-    @if(isset($data))
-        @foreach ($data as $post)       
-        <div class="w-11/12 tb:w-fit mx-auto">
-            <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
-                <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
-                <div class="p-5 dark:bg-card_dark">
-                    <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
-                    <p class="font-normal text-gray-700 mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
-                    <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
-                        Read more
-                    </a>
+                @endforeach
+            @else
+                <div class="w-11/12 tb:w-fit mx-auto">
+                    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
+                        <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="illus/empty.jpg" alt="">
+                        <div class="p-5 dark:bg-card_dark">
+                            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">Wow, this seems to be quite empty.</h5>
+                            <p class="font-normal text-gray-700 mb-3 dark:text-whish">
+                                Currently, we don't have any stories to share with you. However, we believe that everyone has a story to tell,
+                                and we encourage you to join our community and share yours with others. By signing up, you can become a valuable contributor 
+                                to our community and help us create a platform where people can share their unique experiences, 
+                               insights, and perspectives. We believe that everyone's story is worth telling, and we look forward to hearing yours. </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
-        @endforeach
-    @endif
     </div>
+    
+
+    <div id="indexCardLoader" class="pt-10 hidden">
+        <div class="flex flex-wrap gap-9 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="" class="w-11/12 tb:w-fit mx-auto">
+                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark animate-pulse">
+                    <div class="flex items-center justify-center rounded-t-lg max-h-[382px] min-h-[382px] object-cover bg-gray-300 rounded dark:bg-gray-700">
+                        <svg class="w-1/2 h-12 text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    </div>
+                    <div class="p-5 dark:bg-card_dark">
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    
+    
+
 
     <div class="tb:w-10/12 tb:pl-10 tb:pr-44 md:pr-0 md:mx-36 md:pl-20 pb-14">
         <div class="w-full tb:w-5/6 md:w-1/4 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
@@ -195,33 +389,12 @@
             <span class="text-sm tb:text-base">©2023 Write Stuff | All rights reserved.</span>
         </div>
 
-
-
-
-        {{-- <div class="bg-slate-300 dark:bg-card_dark w-full pb-0 h-36 mx-auto flex justify-center">
-            <div class="flex-col pt-7">
-                <div class="flex items-center">
-                    <img src="dp/facebook.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/reddit.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/instagram.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/twitter.png" class="h-10 pr-8 hover:cursor-pointer">
-                </div>
-                <div class="pt-4 -ml-5">
-                    <a href="" class="text-xl pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a><span>|</span>
-                    <a href="post.html" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a><span>|</span>
-                    <a onclick="scrollToTop()" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Back to Top</a>
-                </div>
-                <div class="pt-2 -ml-3">
-                    <span>©2023 Write Stuff | All rights reserved.</span>
-                </div>
-            </div>
-        </div> --}}
-
     </footer>
 
     <img src="dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
         
     <script type="text/javascript" src="js/ajax.js"></script>
+    <script>indexLoader();</script>
     
 </body>
 </html>

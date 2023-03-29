@@ -16,7 +16,7 @@
 </head>
 <body class="font-sans font-bold min-h-screen overflow-auto dark:bg-main_dark dark:text-white">
     <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="postFullHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -48,44 +48,23 @@
                     <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
                 </div>
             </div>
-           
         </div>
-        {{-- <div class="font-mono md:text-2xl text-sm flex items-center">
-            <a href="post" class="absolute left-[240px] md:left-[1400px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
-            @if (auth()->user())
-                    <a href="/user_profile" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                        {{ auth()->user()->username }}
-                    </a>
-            @else
-                <a href="/login" id="userHeader" class="absolute left-[320px] md:left-[1550px] hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
-            @endif
-            <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
-            <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="toggle-dark absolute left-[370px] md:left-[1850px] pl-3 md:pl-0 h-5 md:h-10 hover:cursor-pointer">
-        </div> --}}
+
+        <div id="postFullHeaderLoader" class="hidden animate-pulse">
+            <div class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center pt-8">
+                <div class="ml-5 tb:ml-16 lt:ml-48 md:ml-56 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+                        
+                <div class="ml-24 tb:ml-80 lt:ml-[570px] md:ml-[950px] h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+
+                <div class="ml-5 sm:ml-3 tb:ml-10 lt:ml-7 md:ml-7 h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-16 md:w-32 sm:w-20"></div>
+                        
+            </div>
+        </div>
+
     </header>
 
-    {{-- <div id="postFull" class="mx-auto mt-4 h-fit w-11/12 md:w-[1160px] flex-col items-center shadow-black shadow-lg rounded-lg p-8 text-black bg-white dark:bg-dark_red">
 
-        @foreach($StoryInfo as $Story)
-        <div class="mx-auto text-center">
-            <span class="font-extrabold text-3xl text-red dark:text-white">{{$Story->title}}</span>
-        </div>
-        <div class="mt-7 w-full dark:text-whish">
-            <span>Author:</span>
-            <span>{{$Story->username}}</span>
-        </div>
-        <div class="mt-4 w-full dark:text-whish">
-            <span>Date posted:</span>
-            <span>{{$Story->created_at}}</span>
-        </div>
-        <img src="{{'../'.$Story->picture}}" class="mx-auto rounded-xl mt-5 w-11/12 md:w-[600px]">
-        <div class="mt-7 dark:text-card_white"">
-            <p>{{$Story->content}}</p>
-        </div>
-        @endforeach
-    </div> --}}
-
-    <section id="postFull" class="w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14"> 
+    <section id="postFullContent" class="w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14"> 
         @foreach ($StoryInfo as $Story)
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
@@ -97,7 +76,7 @@
                     <p href="#" class="text-sm pb-3">
                         By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ $Story->created_at}}
                     </p>
-                    <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}..</a>
+                    <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
                     <div class="flex">
                     <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ url('post') }}" class="uppercase text-gray-800 dark:text-white 
                     dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
@@ -107,6 +86,147 @@
         @endforeach
     </section>
 
+    <div id="postFullLoader" class="hidden">
+        <section class="w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14 animate-pulse"> 
+                <article class="flex flex-col shadow my-4">
+                    <!-- Article Image -->             
+                        <svg class="pb-5 md:max-h-[600px] object-cover rounded-t-lg text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
+                            <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 
+                            435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 
+                            480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006
+                            486.1 .0006 456.1L0 456.1z"/></svg>
+                    <div class="max-w-[320px] sm:max-w-[350px] tb:max-w-[750px] lt:max-w-[900px] bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
+                        <div class="flex space-x-2">
+                            <div class="md:w-[400px] h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-6 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[300px] h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <p href="#" class="text-sm pt-2 pb-3">
+                            <div class="flex space-x-2">
+                                <div class="md:w-[100px] h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                                <div class="md:w-[200px] h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            </div>
+                        </p>
+                        <div class="flex space-x-2 pt-10 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pt-10 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[100px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[500px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[400px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[150px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[250px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        <div class="flex space-x-2 pb-3">
+                            <div class="md:w-[50px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[200px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                            <div class="md:w-[100px] h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></div>
+                            <div class="md:w-[442px] h-3 bg-gray-300 rounded-full dark:bg-gray-600 w-60"></div>
+                        </div>
+                        
+                        
+                    </div>
+                </article>
+        </section>
+    </div>    
     <img src="../dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce scroll-smooth">
 
     <footer class="w-full pb-0 h-80 tb:h-64 bg-transparent dark:bg-card_dark border-t-2 border-gray-300 dark:border-t-0">
@@ -165,31 +285,10 @@
         <div class="w-full mx-auto text-center pt-3 tb:pt-6">
             <span class="text-sm tb:text-base">©2023 Write Stuff | All rights reserved.</span>
         </div>
-
-
-
-
-        {{-- <div class="bg-slate-300 dark:bg-card_dark w-full pb-0 h-36 mx-auto flex justify-center">
-            <div class="flex-col pt-7">
-                <div class="flex items-center">
-                    <img src="dp/facebook.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/reddit.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/instagram.png" class="h-10 pr-8 hover:cursor-pointer">
-                    <img src="dp/twitter.png" class="h-10 pr-8 hover:cursor-pointer">
-                </div>
-                <div class="pt-4 -ml-5">
-                    <a href="" class="text-xl pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a><span>|</span>
-                    <a href="post.html" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a><span>|</span>
-                    <a onclick="scrollToTop()" class="text-xl pr-3 pl-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Back to Top</a>
-                </div>
-                <div class="pt-2 -ml-3">
-                    <span>©2023 Write Stuff | All rights reserved.</span>
-                </div>
-            </div>
-        </div> --}}
-
     </footer>
 
     <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/loaders.js"></script>
+    <script>fullStoryLoader();</script>
 </body>
 </html>

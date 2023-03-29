@@ -46,5 +46,8 @@ class EditPost extends Controller
             Alert::success('Success Title', 'Success Message');
             return redirect('user_profile')->with('success_update', 'Successfully updated post');
         }
+        else{
+            return redirect('index');
+        }
     }
 }
