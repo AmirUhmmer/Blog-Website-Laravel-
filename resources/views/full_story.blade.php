@@ -14,8 +14,11 @@
     />
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
-<body class="font-sans font-bold min-h-screen overflow-auto dark:bg-main_dark dark:text-white">
-    <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
+<body class="font-sans font-bold min-h-screen overflow-auto dark:bg-main_dark dark:text-white
+        scrollbar-thin scrollbar-thumb-card_dark scrollbar-track-gray-300 h-3 overflow-x-auto 
+    dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
+    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
+     bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="postFullHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
@@ -64,30 +67,54 @@
     </header>
 
 
-    <section id="postFullContent" class="w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14"> 
-        @foreach ($StoryInfo as $Story)
+    <section id="postFullContent" class="pt-24 w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14"> 
+        @if($StoryInfo->count())
+            @foreach ($StoryInfo as $Story)
+                <article class="flex flex-col shadow my-4">
+                    <!-- Article Image -->
+                    <a class="">
+                        <img src="../{{$Story->picture}}" class="w-full max-h-[600px] object-cover rounded-t-lg">
+                    </a>
+                    <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
+                        <a class="text-3xl font-bold pb-4">{{ $Story->title}}</a>
+                        <p href="#" class="text-sm pb-3">
+                            By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ $Story->created_at}}
+                        </p>
+                        <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
+                        <div class="flex">
+                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ url('post') }}" class="uppercase text-gray-800 dark:text-white 
+                        dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
+                        </div>   
+                    </div>
+                </article>
+            @endforeach
+        @else
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a class="">
-                    <img src="../{{$Story->picture}}" class="w-full max-h-[600px] object-cover rounded-t-lg">
+                    <img src="../illus/empty.jpg" class="w-full max-h-[600px] object-cover rounded-t-lg">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
-                    <a class="text-3xl font-bold pb-4">{{ $Story->title}}</a>
+                    <a class="text-3xl font-bold pb-4">Wow, this seems to be quite empty.</a>
                     <p href="#" class="text-sm pb-3">
-                        By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ $Story->created_at}}
+                        By Write Stuff
                     </p>
-                    <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
+                    <a  class="pb-6 text-justify">
+                        Currently, we don't have any stories to share with you. However, we believe that everyone has a story to tell,
+                        and we encourage you to join our community and share yours with others. By signing up, you can become a valuable contributor 
+                        to our community and help us create a platform where people can share their unique experiences, 
+                       insights, and perspectives. We believe that everyone's story is worth telling, and we look forward to hearing yours.</a>
                     <div class="flex">
                     <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ url('post') }}" class="uppercase text-gray-800 dark:text-white 
                     dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
                     </div>   
                 </div>
             </article>
-        @endforeach
+        @endif
     </section>
 
     <div id="postFullLoader" class="hidden">
-        <section class="w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14 animate-pulse"> 
+        <section class="pt-24 w-full lt:w-9/12 md:w-3/5 flex flex-col items-center px-3 mx-auto pb-14 animate-pulse"> 
                 <article class="flex flex-col shadow my-4">
                     <!-- Article Image -->             
                         <svg class="pb-5 md:max-h-[600px] object-cover rounded-t-lg text-gray-200 dark:text-gray-600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512">
@@ -289,6 +316,7 @@
 
     <script type="text/javascript" src="../js/ajax.js"></script>
     <script type="text/javascript" src="../js/loaders.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
     <script>fullStoryLoader();</script>
 </body>
 </html>

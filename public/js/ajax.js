@@ -31,7 +31,7 @@ function toggleDark(){
     // const darkToggle = document.querySelector('.toggle-dark');
     // document.documentElement.classList.toggle('dark');
 
-    const htmlElement = document.documentElement;
+  const htmlElement = document.documentElement;
   htmlElement.classList.toggle('dark');
 
   if (htmlElement.classList.contains('dark')) {
@@ -46,7 +46,7 @@ function toggleDark(){
 
 }
 
-window.addEventListener('load', function () {
+  document.addEventListener("DOMContentLoaded", function(event) {
     const htmlElement = document.documentElement;
     const darkMode = localStorage.getItem('darkMode');
     if (darkMode === 'on') {
@@ -58,7 +58,7 @@ window.addEventListener('load', function () {
         $('#moon').show();
         $('#sun').hide();
     }
-
+    
   });
 
   function indexLoader(){
@@ -73,24 +73,20 @@ window.addEventListener('load', function () {
     $('#indexCaptionContent').hide();
     $('#indexCaptionContent1').hide();
     $('#headerContent').hide();
-  
-    // Wait for the DOM to be ready
-    $(document).ready(() => {
-      setTimeout(function(){
-        // Hide the loader
-        $('#indexCardLoader').hide();
-        $('#indexCaptionLoader').hide();
-        $('#indexCaptionLoader1').hide();
-        $('#headerLoader').hide();
-  
-        // Show the content
-        $('#indexCardContent').show();
-        $('#indexCaptionContent').show();
-        $('#indexCaptionContent1').show();
-        $('#headerContent').show();
-      }, 1000);
+
+    //loading event
+    window.addEventListener('load', () => {
+       // Hide the loader
+       $('#indexCardLoader').hide();
+       $('#indexCaptionLoader').hide();
+       $('#indexCaptionLoader1').hide();
+       $('#headerLoader').hide();
+ 
+       // Show the content
+       $('#indexCardContent').show();
+       $('#indexCaptionContent').show();
+       $('#indexCaptionContent1').show();
+       $('#headerContent').show();
     });
   }
-  
-  
 

@@ -1,9 +1,9 @@
-<div id="addPostInput" class="hidden">
+<div id="addPostInput" class="hidden pt-20">
     <div class="flex pt-2 md:ml-60">
-        <i class="fa fa-arrow-left pt-[3px]" onclick="cancelButton()"></i>
+        <i class="fa fa-arrow-left pt-[3px] ml-3 md:ml-0" onclick="cancelButton()"></i>
         <span class="text-sm ml-1 hover:text-pink_red hover:underline decoration-light_blue hover:cursor-pointer" onclick="cancelButton()"> DASHBOARD</span>
     </div>
-    <div class="pt-10 md:ml-60"><span class="text-2xl">Add a story</span></div>
+    <div class="pt-10 ml-3 md:ml-60"><span class="text=lg tb:text-xl">Add a story</span></div>
     <div class="md:pt-10 md:ml-60 absolute">
         <form enctype="multipart/form-data" action="addPost" method="POST" id="addPostForm">
             @csrf
@@ -39,12 +39,12 @@
 
 @yield('addForm')
 
-<div id="editPost" class="hidden">
+<div id="editPost" class="hidden pt-20">
     <div class="flex pt-2 md:ml-60">
-        <i class="fa fa-arrow-left pt-[3px]" onclick="cancelButtonEdit()"></i>
+        <i class="fa fa-arrow-left pt-[3px] ml-3 md:ml-0" onclick="cancelButtonEdit()"></i>
         <span class="text-sm ml-1 hover:text-pink_red hover:underline decoration-light_blue hover:cursor-pointer" onclick="cancelButtonEdit()"> DASHBOARD</span>
     </div>
-    <div class="pt-10 md:ml-60"><span class="text-2xl">Edit your post</span></div>
+    <div class="pt-10 ml-3 md:ml-60"><span class="text=lg tb:text-xl">Edit your post</span></div>
     <div class="md:pt-10 md:ml-60 absolute">
         <form enctype="multipart/form-data" action="editPost" method="POST" id="editPostForm">
             @csrf

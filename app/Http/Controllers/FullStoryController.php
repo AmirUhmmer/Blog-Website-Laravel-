@@ -11,7 +11,7 @@ class FullStoryController extends Controller
 
     public function DisplayFullStory($post_id){
         $this->post_id = $post_id;
-        $wholePost = Posts::where('id', $this->post_id)->get();
+        $wholePost = Posts::where('id', $this->post_id)->where('deleted', '0')->get();
         return view('full_story', ['StoryInfo' => $wholePost]);
     }
 }

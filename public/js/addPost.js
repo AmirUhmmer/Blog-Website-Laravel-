@@ -36,7 +36,7 @@
 
 function showAddPost(){
     $('#addPostInput').show()
-    $('#caption1').hide()
+    $('#profileCaptionContent').hide()
     $('#userTable').hide()
     $('#goTop').hide()
     $('#pages').hide()
@@ -45,7 +45,7 @@ function showAddPost(){
 function cancelButton(){
     $('#pages').show()
     $('#addPostInput').hide()
-    $('#caption1').show()
+    $('#profileCaptionContent').show()
     $('#userTable').show()
     $('#goTop').show()
     document.getElementById("picture").value = "";

@@ -12,8 +12,8 @@ class AddPost extends Controller
 
         $request->validate([
             'picture' => 'required|image',
-            'title' => 'required',
-            'content' => 'required'
+            'title' => 'required|min:2|max:80',
+            'content' => 'required|min:2'
         ]);
 
         $title = $request->input('title');
@@ -22,13 +22,14 @@ class AddPost extends Controller
         $current_timestamp = time();
         $current_date_time = date('Y-m-d H:i:s', $current_timestamp);
 
-        $addPostSuccess = Posts::insert([
-            'username'=>auth()->user()->username,
-            'title'=>$title,
-            'content'=>$content,
-            'picture'=>'storage/pictures/'.$fileName,
-            'created_at'=>$current_date_time
-        ]);
+        $post = new Posts;
+        $post->username = auth()->user()->username;
+        $post->title = $title;
+        $post->content = $content;
+        $post->picture = 'storage/pictures/' . $fileName;
+        $post->created_at = $current_date_time;
+        $addPostSuccess = $post->save();
+
 
         if($addPostSuccess){
             $request->file('picture')->storeAs('pictures', $fileName);

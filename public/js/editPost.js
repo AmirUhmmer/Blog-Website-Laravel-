@@ -1,7 +1,7 @@
 function showEditPost(button){
 
     $('#editPost').show()
-    $('#caption1').hide()
+    $('#profileCaptionContent').hide()
     $('#userTable').hide()
     $('#goTop').hide()
     $('#pages').hide()
@@ -24,7 +24,7 @@ function showEditPost(button){
 function cancelButtonEdit(){
     $('#pages').show()
     $('#editPost').hide()
-    $('#caption1').show()
+    $('#profileCaptionContent').show()
     $('#userTable').show()
     $('#goTop').show()
     document.getElementById("pictureToEdit").value = "";

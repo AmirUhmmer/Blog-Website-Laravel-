@@ -9,8 +9,7 @@ function fullStoryLoader(){
 
   
     // Wait for the DOM to be ready
-    $(document).ready(() => {
-      setTimeout(function(){
+    window.addEventListener('load', () => {
         // Hide the loader
         $('#postFullHeaderLoader').hide();
         $('#postFullLoader').hide();
@@ -18,8 +17,8 @@ function fullStoryLoader(){
         // Show the content
         $('#postFullHeaderContent').show();
         $('#postFullContent').show();
-      }, 1000);
     });
+    
   }
 
   function postsLoader(){
@@ -35,8 +34,7 @@ function fullStoryLoader(){
 
   
     // Wait for the DOM to be ready
-    $(document).ready(() => {
-      setTimeout(function(){
+    window.addEventListener('load', () => {
         // Hide the loader
         $('#postHeaderLoader').hide();
         $('#postSnippetsLoader').hide();
@@ -47,6 +45,31 @@ function fullStoryLoader(){
         $('#postSnippetsContent').show();
         $('#postCaptionContent').show();
 
-      }, 1000);
+    });
+  }
+
+  function profileLoader(){
+    // Show the loader
+    $('#profileHeaderLoader').show();
+    $('#profileCaptionLoader').show();
+    $('#userTableLoader').show();
+  
+    // Hide the content
+    $('#profileHeaderContent').hide();
+    $('#profileCaptionContent').hide();
+    $('#userTable').hide();
+
+  
+    // Wait for the DOM to be ready
+    window.addEventListener('load', () => {
+        // Hide the loader
+        $('#profileHeaderLoader').hide();
+        $('#profileCaptionLoader').hide();
+        $('#userTableLoader').hide();
+  
+        // Show the content
+        $('#profileHeaderContent').show();
+        $('#profileCaptionContent').show();
+        $('#userTable').show()
     });
   }

@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\Storage;
 class EditPost extends Controller
 {
     public function UpdateDB(Request $request){
-
         $request->validate([
-            'pictureToEdit' => 'required|image',
-            'titleToEdit' => 'required',
-            'contentToEdit' => 'required'
+            'pictureToEdit' => 'image',
+            'titleToEdit' => 'required|min:2|max:80',
+            'contentToEdit' => 'required|min:2'
         ]);
 
         $id = $request->input('idEdit');

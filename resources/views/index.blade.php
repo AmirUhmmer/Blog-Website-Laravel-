@@ -15,7 +15,9 @@
     @include('sweetalert::alert')
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
-<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish">
+<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish 
+    scrollbar-thin scrollbar-thumb-card_dark scrollbar-track-gray-300 h-3 overflow-x-auto 
+    dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
 
     @extends('index.index_alert')
     @section('successSignUp')
@@ -25,7 +27,8 @@
     @endsection
     
 
-    <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
+    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
+     bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
@@ -53,9 +56,9 @@
                 @endif
                 </div>
 
-                <div>
-                    <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                <div class="pl-4">
+                    <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -73,7 +76,7 @@
 
     </header>
     
-    <div id="indexCaptionContent" class="flex items-center h-fit z-0">
+    <div id="indexCaptionContent" class="flex pt-16 items-center h-fit z-0">
         <span class="absolute text-center tb:text-xl tb:mx-32 tb:-mt-[480px] lt:mx-0 lt:text-left lt:-mt-72 -mt-64 md:text-3xl lt:left-20 md:left-52 md:-mt-80">
             Enjoy the thrill of sharing and reading outstanding content.</span>
         <span class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
@@ -83,7 +86,7 @@
         <img src="illus/Collab-pana.png" class="mx-auto object-cover lt:ml-[590px] md:ml-[900px] h-[400px] tb:h-[700px] md:h-[800px]">
     </div>
 
-    <div id="indexCaptionLoader" class="md:pt-52 animate-pulse hidden">
+    <div id="indexCaptionLoader" class="pt-16 md:pt-80 animate-pulse hidden">
         <div class="flex items-center h-fit z-0">
             <div class="absolute md:w-[840px] text-center tb:text-xl tb:mx-32 tb:-mt-[480px] lt:mx-0 lt:text-left lt:-mt-72 -mt-64 md:text-3xl lt:left-20 md:left-52 md:-mt-80
             h-8 rounded-full bg-gray-200 dark:bg-gray-700">
@@ -156,7 +159,7 @@
                         <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
                         <div class="p-5 dark:bg-card_dark">
                             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
-                            <p class="font-normal text-gray-700 mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
+                            <p class="font-normal text-gray-700 text-justify mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
                             <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
                                 Read more
                             </a>
@@ -195,14 +198,14 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
@@ -217,14 +220,14 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
@@ -239,14 +242,14 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
@@ -261,14 +264,14 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
@@ -283,14 +286,14 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
@@ -305,17 +308,19 @@
                             486.1 .0006 456.1L0 456.1z"/></svg>
                     </div>
                     <div class="p-5 dark:bg-card_dark">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4""></div>
-                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-24 mb-4""></div>
+                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-1/2 tb:w-60 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full tb:w-80 mb-4""></div>
+                        <div class="h-8 bg-gray-200 rounded-lg dark:bg-gray-700 w-1/4 tb:w-24 mb-4""></div>
                     </div>
                 </div>
             </div>
+
+           
 
         </div>
         
@@ -391,9 +396,10 @@
 
     </footer>
 
-    <img src="dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
+    <img src="dp/up-arrows.png" onclick="scrollToTop()" id="upArrow" class=" fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
         
     <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
     <script>indexLoader();</script>
     
 </body>

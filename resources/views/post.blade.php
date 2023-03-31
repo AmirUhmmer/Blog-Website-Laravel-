@@ -14,8 +14,11 @@
     @vite('resources/css/app.css')
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
-<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-white">
-    <header class="border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
+<body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-white
+            scrollbar-thin scrollbar-thumb-card_dark scrollbar-track-gray-300 h-3 overflow-x-auto 
+            dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
+    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
+    bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="postHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
@@ -64,11 +67,11 @@
     </header>
     
     
-    <div id="postCaptionContent" class="mt-7 ml-5 lt:pl-80 md:pl-[470px] font-extrabold md:text-xl">
+    <div id="postCaptionContent" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] font-extrabold md:text-xl">
         <span class="">POSTS</span>
     </div>
 
-    <div id="postCaptionloader" class="mt-7 ml-5 lt:pl-80 md:pl-[470px] hidden">
+    <div id="postCaptionloader" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] hidden">
         <div class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-16"></div>
     </div>
 
@@ -309,6 +312,7 @@
 
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="../js/loaders.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
     <script>postsLoader();</script>
 </body>
 </html>
