@@ -43,7 +43,13 @@ class EditPost extends Controller
 
             ($request->file('pictureToEdit') ? $request->file('pictureToEdit')->storeAs('pictures', time().$request->file('pictureToEdit')->getClientOriginalName()) : '');
             Alert::success('Success Title', 'Success Message');
-            return redirect('user_profile')->with('success_update', 'Successfully updated post');
+            
+            if (auth()->user()->username == 'admin') {
+                return redirect('admin')->with('success_update', 'Successfully updated post');
+            }
+            else{
+                return redirect('user_profile')->with('success_update', 'Successfully updated post');
+            }
         }
         else{
             return redirect('index');

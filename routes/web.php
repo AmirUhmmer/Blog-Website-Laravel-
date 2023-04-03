@@ -36,7 +36,6 @@ Route::get('/index', [HomeController::class, 'IndexContent'], function () {
 });
 
 Route::get('/post', [AllPost::class, 'DisplayAllPost'], function () {
-    return view('post');
 });
 
 Route::get('/login', function() {
@@ -62,6 +61,8 @@ Route::get('/full_story/{post_id}', [FullStoryController::class, 'DisplayFullSto
 })->name('full_story');
 
 Route::get('/user_profile', [userPosts::class, 'displayuserPosts'])->middleware('auth');
+
+Route::get('/admin', [userPosts::class, 'displayuserPostsAdmin'])->middleware('auth');
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 

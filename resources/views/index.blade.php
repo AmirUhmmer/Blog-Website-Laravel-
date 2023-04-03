@@ -27,7 +27,7 @@
     @endsection
     
 
-    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
+    <header id="header" class="fixed top-0 translate-y-0 transform transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
@@ -46,10 +46,18 @@
 
                 <div>
                 @if (auth()->user())
+                    @if (auth()->user()->username != 'admin')
                         <a href="/user_profile" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
                         hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
                             {{ auth()->user()->username }}
                         </a>
+                    @else
+                        <a href="/admin" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
+                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                            {{ auth()->user()->username }}
+                        </a>
+                    @endif
+                        
                 @else
                     <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -58,7 +66,7 @@
 
                 <div class="pl-4">
                     <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -82,7 +90,7 @@
         <span class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
             Write Stuff is a community-driven blog platform where users can share their unique perspectives and ideas with the world. 
             Join us and discover a diverse range of topics from creative writing to thought-provoking discussions. Connect with like-minded 
-            individuals, engage in meaningful conversations, and inspire others with your words. Start writing today and share your voice with the world.</span>
+            individuals, engage in meaningful stories, and inspire others with your words. Start writing today and share your voice with the world.</span>
         <img src="illus/Collab-pana.png" class="mx-auto object-cover lt:ml-[590px] md:ml-[900px] h-[400px] tb:h-[700px] md:h-[800px]">
     </div>
 

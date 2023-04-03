@@ -20,7 +20,14 @@ class DeletePost extends Controller
         Storage::disk('local')->delete('public/pictures/'.substr($origPic, 17));
 
         Alert::success('Success Title', 'Success Message');
-        return redirect('user_profile')->with('success_delete', 'Successfully deleted post');
+        
+
+        if (auth()->user()->username == 'admin') {
+            return redirect('admin')->with('success_delete', 'Successfully deleted post');
+        }
+        else{
+            return redirect('user_profile')->with('success_delete', 'Successfully deleted post');
+        }
     }
     
 }

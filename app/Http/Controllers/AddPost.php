@@ -23,7 +23,12 @@ class AddPost extends Controller
         $current_date_time = date('Y-m-d H:i:s', $current_timestamp);
 
         $post = new Posts;
-        $post->username = auth()->user()->username;
+        if (auth()->user()->username == 'admin') {
+            $post->username = 'Write Stuff';
+        }
+        else{
+            $post->username = auth()->user()->username;
+        }
         $post->title = $title;
         $post->content = $content;
         $post->picture = 'storage/pictures/' . $fileName;
@@ -34,7 +39,12 @@ class AddPost extends Controller
         if($addPostSuccess){
             $request->file('picture')->storeAs('pictures', $fileName);
             Alert::success('Success Title', 'Success Message');
-            return redirect('user_profile')->with('success_add', 'Successfully added post');
+            if (auth()->user()->username == 'admin') {
+                return redirect('admin')->with('success_add', 'Successfully added post');
+            }
+            else{
+                return redirect('user_profile')->with('success_add', 'Successfully added post');
+            }
         }
         else{
             return redirect('index');

@@ -17,7 +17,8 @@
 <body class="font-sans font-bold min-h-screen overflow-auto dark:bg-main_dark dark:text-white
         scrollbar-thin scrollbar-thumb-card_dark scrollbar-track-gray-300 h-3 overflow-x-auto 
     dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
-    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
+
+    <header id="header" class="fixed top-0 translate-y-0 transform transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="postFullHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
@@ -36,10 +37,18 @@
 
                 <div>
                 @if (auth()->user())
+                    @if (auth()->user()->username != 'admin')
                         <a href="/user_profile" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
                         hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
                             {{ auth()->user()->username }}
                         </a>
+                    @else
+                        <a href="/admin" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
+                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                            {{ auth()->user()->username }}
+                        </a>
+                    @endif
+                        
                 @else
                     <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -48,7 +57,7 @@
 
                 <div>
                     <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -78,7 +87,7 @@
                     <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                         <a class="text-3xl font-bold pb-4">{{ $Story->title}}</a>
                         <p href="#" class="text-sm pb-3">
-                            By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ $Story->created_at}}
+                            By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ substr($Story->created_at, 0, 10)}}
                         </p>
                         <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
                         <div class="flex">
@@ -316,7 +325,7 @@
 
     <script type="text/javascript" src="../js/ajax.js"></script>
     <script type="text/javascript" src="../js/loaders.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="../js/header.js"></script>
     <script>fullStoryLoader();</script>
 </body>
 </html>

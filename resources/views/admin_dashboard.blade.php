@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div>
-                    <a href="{{ url('logout') }}" id="userHeader" class="absolute left-[275px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
+                    <a href="{{ url('logout') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Logout</a>
                 </div>
 
@@ -67,8 +67,8 @@
 
         <div id="profileCaptionContent" class="pt-14 md:pt-20 tb:flex w-11/12 items-center">
             <div class="pl-9 tb:pl-28 lt:pl-60 pt-12 md:pt-11">
-                <span>Your Stories</span>
-                <div class="pt-3"><span>A compilation of chronicles authored by yourself</span></div>
+                <span>User Stories</span>
+                <div class="pt-3"><span>A compilation of chronicles authored by the community</span></div>
             </div>
 
             <div class="mx-auto text-center pl-10 md:pl-[830px] pt-16 md:pt-11">
@@ -144,7 +144,7 @@
                             @if($posts->count())
                                 @foreach($posts as $post)
                                     <tr class="bg-gray-50 border-b dark:bg-card_dark dark:border-card_dark hover:bg-whish dark:hover:bg-gray-800">
-                                        <td class="px-6 tb:py-4 font-bold max-w-sm text-gray-900 dark:text-white">
+                                        <td class="px-6 tb:py-4 font-medium max-w-sm text-gray-900 dark:text-white">
                                             {{ $post->title }}
                                         </td>
                                         <td class="px-6 tb:py-4 hidden tb:table-cell max-w-sm">
@@ -155,13 +155,17 @@
                                             <img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover">
                                         </td>
                                         <td class="px-6 tb:py-4">
-                                            <a onclick="showEditPost(this)" class="font-medium hover:cursor-pointer text-blue-600 dark:text-blue-500 hover:underline pr-3" 
+                                            @if ($post->username == 'Write Stuff')
+                                                <a onclick="showEditPost(this)" class="font-medium hover:cursor-pointer text-blue-600 dark:text-blue-500 hover:underline pr-3" 
                                                 data-idEdit="{{ $post->id }}" 
                                                 data-titleEdit="{{ $post->title }}" 
                                                 data-contentEdit="{{ $post->content }}" 
                                                 data-pictureEdit="{{ $post->picture }}">
                                                 Edit
-                                            </a>
+                                                </a>
+                                                
+                                            @endif
+                                            
                                             <a onclick="deleteButton(this)" class="font-medium hover:cursor-pointer text-pink_red hover:underline"
                                                 data-id="{{ $post->id }}">
                                                 Delete

@@ -36,10 +36,18 @@
 
                 <div>
                 @if (auth()->user())
+                    @if (auth()->user()->username != 'admin')
                         <a href="/user_profile" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
                         hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
                             {{ auth()->user()->username }}
                         </a>
+                    @else
+                        <a href="/admin" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
+                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                            {{ auth()->user()->username }}
+                        </a>
+                    @endif
+                        
                 @else
                     <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -48,7 +56,7 @@
 
                 <div>
                     <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -86,7 +94,7 @@
                 <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title}}</a>
                     <p href="#" class="text-sm pb-3">
-                        By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ $post->created_at}}
+                        By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ substr($post->created_at, 0, 10)}}
                     </p>
                     <a  class="pb-6 text-justify">{{ substr($post->content, 0, 300)}}...</a>
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-solid fa-arrow-right fa-fade"></i></a>
