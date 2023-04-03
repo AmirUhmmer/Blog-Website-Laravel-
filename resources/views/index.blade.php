@@ -26,9 +26,6 @@
     @section('successSignIn')
     @endsection
     
-    <header id="header" class="fixed top-0 translate-y-0 transform transition-transform duration-300 ease-in-out
-     bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-
     <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
