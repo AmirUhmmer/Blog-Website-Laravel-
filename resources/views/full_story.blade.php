@@ -325,7 +325,7 @@
 
     <script type="text/javascript" src="../js/ajax.js"></script>
     <script type="text/javascript" src="../js/loaders.js"></script>
-    <script type="text/javascript" src="../js/header.js"></script>
+    <script type="text/javascript" src="../js/headers.js"></script>
     <script>fullStoryLoader();</script>
 </body>
 </html>

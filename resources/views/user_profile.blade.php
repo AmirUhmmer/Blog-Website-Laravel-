@@ -342,7 +342,7 @@
 
     <script type="text/javascript">profileLoader();</script>
    
-    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/headers.js"></script>
 
 </body>
 </html>

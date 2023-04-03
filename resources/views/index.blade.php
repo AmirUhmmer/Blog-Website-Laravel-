@@ -26,8 +26,7 @@
     @section('successSignIn')
     @endsection
     
-
-    <header id="header" class="fixed top-0 translate-y-0 transform transition-transform duration-300 ease-in-out
+    <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
         <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
             <div class="flex">
@@ -46,18 +45,10 @@
 
                 <div>
                 @if (auth()->user())
-                    @if (auth()->user()->username != 'admin')
                         <a href="/user_profile" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
                         hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
                             {{ auth()->user()->username }}
                         </a>
-                    @else
-                        <a href="/admin" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
-                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                            {{ auth()->user()->username }}
-                        </a>
-                    @endif
-                        
                 @else
                     <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
@@ -66,7 +57,7 @@
 
                 <div class="pl-4">
                     <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -90,7 +81,7 @@
         <span class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
             Write Stuff is a community-driven blog platform where users can share their unique perspectives and ideas with the world. 
             Join us and discover a diverse range of topics from creative writing to thought-provoking discussions. Connect with like-minded 
-            individuals, engage in meaningful stories, and inspire others with your words. Start writing today and share your voice with the world.</span>
+            individuals, engage in meaningful conversations, and inspire others with your words. Start writing today and share your voice with the world.</span>
         <img src="illus/Collab-pana.png" class="mx-auto object-cover lt:ml-[590px] md:ml-[900px] h-[400px] tb:h-[700px] md:h-[800px]">
     </div>
 
@@ -371,43 +362,34 @@
                     <i class="fa fa-phone"></i>
                     <span class="ml-2 text-xs tb:text-sm"">+639 12 345 6789</span>
                   </div>
-
                   <div class="flex items-center">
                     <i class="fa-regular fa-envelope"></i>
                     <span class="ml-2 text-xs tb:text-sm">sample@email.com</span>
                   </div>
-
             </div>
-
             <div class="pl-10 md:pl-64 pt-5 md:pt-10">
                 <span class="text-sm tb:text-base">QUICK LINKS</span>
-
                   <div class="flex items-center">
                     <a href="{{ url('index') }}" class="text-xs tb:text-sm pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a>
                   </div>
-
                   <div class="flex items-center">
                     <a href="{{ url('post') }}" class="text-xs tb:text-sm pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a>
                   </div>
-
                   <div class="flex items-center">
                     <a onclick="scrollToTop()" class="text-xs tb:text-sm pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Back to Top</a>
                   </div>
             </div>
         </div>
-
         <div class="md:w-[1300px] lt:w-[900px] border-t-2 border-gray-300 mx-auto"></div>
-
         <div class="w-full mx-auto text-center pt-3 tb:pt-6">
             <span class="text-sm tb:text-base">©2023 Write Stuff | All rights reserved.</span>
         </div>
-
     </footer>
 
     <img src="dp/up-arrows.png" onclick="scrollToTop()" id="upArrow" class=" fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
         
     <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/headers.js"></script>
     <script>indexLoader();</script>
     
 </body>
