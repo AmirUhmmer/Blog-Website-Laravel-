@@ -24,4 +24,21 @@ function getScrollDirection() {
       document.querySelector('#header').classList.add('translate-y-0');
       document.querySelector('#header').classList.remove('-translate-y-full');
     }
+<<<<<<< HEAD
   });
+=======
+  });
+
+  window.addEventListener('scroll', function() {
+    var scrollDirection = getScrollDirection();
+    if (scrollDirection === 'down') {
+        document.querySelector('#header').classList.remove('translate-y-0');
+        document.querySelector('#header').classList.add('-translate-y-full');
+    } else if (scrollDirection === 'up') {
+        document.querySelector('#header').classList.remove('-translate-y-full');
+        document.querySelector('#header').classList.add('translate-y-0');
+    }
+  });
+  
+  
+>>>>>>> 17376b46ef98b0dd941c8405ec6ead5ee59ee88c
