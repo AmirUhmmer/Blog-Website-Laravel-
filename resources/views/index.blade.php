@@ -13,6 +13,7 @@
     />
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
+    {{-- <link href="{{ asset('../resources/css/app.css') }}" rel="stylesheet"> --}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish 
@@ -50,6 +51,7 @@
                             {{ auth()->user()->username }}
                         </a>
                 @else
+
                     <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
                 @endif
@@ -81,7 +83,7 @@
         <span class="absolute hidden lt:block text-center mt-96 lt:text-left lt:left-24 lt:-mt-16 md:left-56 md:-mt-16 lt:w-[600px]">
             Write Stuff is a community-driven blog platform where users can share their unique perspectives and ideas with the world. 
             Join us and discover a diverse range of topics from creative writing to thought-provoking discussions. Connect with like-minded 
-            individuals, engage in meaningful conversations, and inspire others with your words. Start writing today and share your voice with the world.</span>
+            individuals, engage in meaningful contents, and inspire others with your words. Start writing today and share your voice with the world.</span>
         <img src="illus/Collab-pana.png" class="mx-auto object-cover lt:ml-[590px] md:ml-[900px] h-[400px] tb:h-[700px] md:h-[800px]">
     </div>
 

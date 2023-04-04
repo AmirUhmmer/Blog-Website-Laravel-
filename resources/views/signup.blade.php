@@ -17,8 +17,8 @@
 
     {{ $display = (isset($script) ? $script : null)}}
 
-    <div class="fixed pl-5 pt-14 tb:pt-52 tb:pl-44 lt:pl-[340px] md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
-        <a href={{ url('index') }}>&lt- Go back</a>
+    <div class="fixed pl-5 pt-14 tb:pt-52 tb:pl-44 tbl:pl-72 lt:pl-[340px] md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
+        <a href={{ url('index') }}>&lt- Home</a>
     </div>
     <div class="pt-24 tb:pt-64 md:pt-72">
         <div class="container w-11/12 max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">

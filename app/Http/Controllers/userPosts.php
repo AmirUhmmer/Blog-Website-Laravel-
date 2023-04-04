@@ -13,7 +13,10 @@ class userPosts extends Controller
             return redirect('admin');
         }
 
-        $userPosts = Posts::where('deleted', '0')->where('username', auth()->user()->username)->paginate(6);
+        $userPosts = Posts::where('deleted', '0')
+                            ->where('username', auth()->user()->username)
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(6);
         
         return view('user_profile', 
         ['posts' => $userPosts,]);
@@ -25,7 +28,9 @@ class userPosts extends Controller
             return redirect('user_profile');
         }
 
-        $userPosts = Posts::where('deleted', '0')->paginate(6);
+        $userPosts = Posts::where('deleted', '0')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(6);
         
         return view('admin_dashboard', 
         ['posts' => $userPosts,]);

@@ -26,8 +26,8 @@
     </script>
     @endif
     
-    <div class="fixed pt-24 pl-5 sm:pt-32 sm:pl-5 tb:pt-60 tb:pl-16 md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
-        <a href={{ url('index') }}>&lt- Go back</a>
+    <div class="fixed pt-24 pl-5 sm:pt-32 sm:pl-5 tb:pt-60 tb:pl-16 tbl:pl-44 lt:pl-[315px] md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
+        <a href={{ url('index') }}>&lt- Home</a>
     </div>
     <div class="pt-32 sm:pt-40 tb:pt-72 md:pt-72">
         <div class="container max-w-md mx-auto w-11/12 tb:max-w-2xl xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
@@ -95,52 +95,6 @@
     </div>
     </div>
     </div>
-
-        {{-- <div class="flex-col">
-            <div class="pt-24 md:pt-48">
-                <img src="illus/cahp.jpg" class="mx-auto rounded-xl h-[180px] w-11/12 md:w-[500px]">
-            </div>
-            <div class="mx-auto mt-2 h-fit w-11/12 md:w-[500px] shadow-lg bg-white bg-opacity-50 dark:bg-white dark:bg-opacity-10 shadow-black rounded-lg p-8 flex-col">
-                <form action="loginUser" id="login" method="POST">
-                    @csrf
-                    <div class="pt-2"> 
-                        <span class="dark:text-whish font-extrabold text-xl md:text-2xl">Username</span>
-                    </div>
-                    <div class="pt-3">
-                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 dark:text-whish focus:bg-transparent focus:outline-none" 
-                        type="text" 
-                        name="username" 
-                        id="username" 
-                        placeholder="Enter username" 
-                        required>
-                    </div>
-                    @error('username')
-                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                    <div class="pt-7">
-                        <span class="dark:text-whish font-extrabold text-xl md:text-2xl">Password</span>
-                    </div>
-                    <div class="flex pt-3">
-                        <input class="border-b-2 border-white bg-transparent w-[270px] md:w-96 dark:text-whish focus:bg-transparent focus:outline-none" 
-                        type="password" 
-                        name="password" 
-                        id="password" 
-                        placeholder="Password" 
-                        required>
-                        <img src="dp/eye.png" id="togglePassword" class="w-7 ml-4 relative">
-                    </div>
-                    @error('password')
-                        <p class="text-whish text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                    <div class="pt-5">
-                        <a href="signup" class="dark:text-whish font-extrabold hover:cursor-pointer hover: text-sm md:text-base hover:text-blue-500 hover:underline decoration-blue-500">Sign Up</a>
-                    </div>
-                    <div class="pt-7 mx-16 md:mx-32">
-                        <input type="submit" name="submit" value="Login" class="w-40 h-11 dark:bg-white bg-green-500 bg-opacity-70 rounded-xl hover:cursor-pointer hover:bg-opacity-95 transition-all duration-150">
-                    </div>
-                    </form>
-            </div>
-        </div> --}}
 
         
         
