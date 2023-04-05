@@ -155,15 +155,19 @@
         <div class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
             @if($data->count())
                 @foreach ($data as $post)       
-                <div class="w-11/12 tb:w-fit mx-auto">
+                <div class="w-11/12 tb:w-fit mx-auto lt:min-w-[384px] mb:min-h-[342px]">
                     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
                         <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
                         <div class="p-5 dark:bg-card_dark">
-                            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{$post->title}}</h5>
+                            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{substr($post->title, 0, 53)}}</h5>
                             <p class="font-normal text-gray-700 text-justify mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
-                            <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
-                                Read more
-                            </a>
+
+                                <a href="{{ route('full_story', ['post_id' => $post->id]) }}" 
+                                    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
+                                    focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+                                    Read more
+                                </a>
+                            
                         </div>
                     </div>
                 </div>

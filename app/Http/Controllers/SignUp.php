@@ -14,8 +14,8 @@ class SignUp extends Controller
     public function addUser(Request $request){
        Request()->validate([
             'username' => 'required|min:2|max:50|unique:users,username',
-            'password' => 'required|min:2|max:50|same:password_verify',
-            'password_verify' => 'required|min:2|max:50|same:password',
+            'password' => 'required|min:8|max:50|same:password_verify',
+            'password_verify' => 'required|min:8|max:50|same:password',
 
         ], [    
             'password.same' => 'The password verification field must match both password field.',

@@ -25,3 +25,7 @@ function getScrollDirection() {
       document.querySelector('#header').classList.remove('-translate-y-full');
     }
   });
+
+  // document.addEventListener("DOMContentLoaded", function() {
+    
+  // });
