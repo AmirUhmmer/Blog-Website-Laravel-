@@ -14,7 +14,8 @@ class EditPost extends Controller
         $request->validate([
             'pictureToEdit' => 'image',
             'titleToEdit' => 'required|min:2|max:80',
-            'contentToEdit' => 'required|min:2'
+            'contentToEdit' => 'required|min:2',
+            'categoryToEdit' => 'required'
         ]);
 
         $id = $request->input('idEdit');
@@ -22,6 +23,7 @@ class EditPost extends Controller
 
         $title = $request->input('titleToEdit');
         $content = $request->input('contentToEdit');
+        $category = $request->input('categoryToEdit');
         $fileName = ($request->file('pictureToEdit') ? 'storage/pictures/'.time().$request->file('pictureToEdit')->getClientOriginalName() : $origPic);
         
         $current_timestamp = time();
@@ -31,6 +33,7 @@ class EditPost extends Controller
         $editPostSuccess = Posts::where('id', $id)->update([
             'title' => $title,
             'content' => $content,
+            'category' => $category,
             'created_at'=>$current_date_time
         ]);
 

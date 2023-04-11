@@ -86,12 +86,18 @@
                     </a>
                     <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                         <a class="text-3xl font-bold pb-4">{{ $Story->title}}</a>
+                        <div class="w-fit h-fit border-2 border-gray-700 rounded-md hover:cursor-pointer hover:bg-gray-700">
+                            <a class="p-3">
+                                {{$Story->category}}
+                            </a>
+                        </div>
                         <p href="#" class="text-sm pb-3">
                             By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ substr($Story->created_at, 0, 10)}}
                         </p>
                         <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
                         <div class="flex">
-                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ url('post') }}" class="uppercase text-gray-800 dark:text-white 
+                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ route('blogs', ['category' => $Story->category]) }}" 
+                            class="uppercase text-gray-800 dark:text-white 
                         dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
                         </div>   
                     </div>

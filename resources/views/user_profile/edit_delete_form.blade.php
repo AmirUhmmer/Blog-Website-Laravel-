@@ -9,7 +9,30 @@
             @csrf
             <div class="md:flex">
                 <div>
-                    <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
+                    <div class="pb-2">
+                        <label class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0">Blog Category</label>
+                    </div>
+                    <div>
+                        <select id="categoryToAdd" name="category" class="rounded-md border-[1px] dark:bg-card_dark
+                        border-gray-500 ml-3 md:ml-0 w-11/12 lt:w-[1173px] md:w-[754px] h-10 text-base" required>
+                            <option value="" selected>Choose a category</option>
+                            <option value="Business blog">Business blog</option>
+                            <option value="DIY craft blog">DIY craft blog</option>
+                            <option value="Fashion and beauty blog">Fashion and beauty blog</option>
+                            <option value="Food blog">Food blog</option>
+                            <option value="Health and fitness blog">Health and fitness blog</option>
+                            <option value="Lifestyle blog">Lifestyle blog</option>
+                            <option value="Movie blog">Movie blog</option>
+                            <option value="Music blog">Music blog</option>
+                            <option value="News blog">News blog</option>
+                            <option value="Photography blog">Photography blog</option>
+                            <option value="Political blog">Political blog</option> 
+                            <option value="Sports blog">Sports blog</option>
+                            <option value="Travel blog">Travel blog</option>
+                            <option value="Other Blog">Others</option>
+                        </select>
+                    </div>
+                    <div class="pt-6 ml-3 md:ml-0 pb-2"><span>Your Title</span></div>
                     <div><input type="text" id="titleToAdd" name="title" placeholder="Title" class="rounded-md border-[1px] dark:bg-card_dark
                          border-gray-500 ml-3 md:ml-0 w-11/12 lt:w-[1173px] md:w-[754px] h-10 text-lg" required></div>
                     <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>
@@ -51,7 +74,28 @@
             <input type="hidden" name="idEdit" id="idEdit">
             <div class="md:flex">
                 <div>
-                    <div class="pb-2 pt-10 ml-3 md:ml-0 md:pt-0"><span>Your Title</span></div>
+                    <div class="pb-2">
+                        <label class="pt-10 ml-3 md:ml-0 md:pt-0">Blog Category</label>
+                    </div>
+                    <select id="categoryToEdit" name="categoryToEdit" class="rounded-md border-[1px] dark:bg-card_dark
+                        border-gray-500 ml-3 md:ml-0 w-11/12 lt:w-[1173px] md:w-[754px] h-10 text-base" required>
+                            <option value="">Choose a category</option>
+                            <option value="Business blog">Business blog</option>
+                            <option value="DIY craft blog">DIY craft blog</option>
+                            <option value="Fashion and beauty blog">Fashion and beauty blog</option>
+                            <option value="Food blog">Food blog</option>
+                            <option value="Health and fitness blog">Health and fitness blog</option>
+                            <option value="Lifestyle blog">Lifestyle blog</option>
+                            <option value="Movie blog">Movie blog</option>
+                            <option value="Music blog">Music blog</option>
+                            <option value="News blog">News blog</option>
+                            <option value="Photography blog">Photography blog</option>
+                            <option value="Political blog">Political blog</option> 
+                            <option value="Sports blog">Sports blog</option>
+                            <option value="Travel blog">Travel blog</option>
+                            <option value="Other Blog">Others</option>
+                    </select>
+                    <div class="pb-2 pt-6 ml-3 md:ml-0"><span>Your Title</span></div>
                     <div><input type="text" id="titleToEdit" name="titleToEdit" placeholder="Title" class="rounded-md border-[1px] dark:bg-card_dark 
                     border-gray-500 ml-3 md:ml-0 w-11/12 md:w-[754px] h-10 text-lg" required></div>
                     <div class="pt-6 ml-3 md:ml-0"><span>Your Blog Content</span></div>

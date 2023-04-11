@@ -13,7 +13,8 @@ class AddPost extends Controller
         $request->validate([
             'picture' => 'required|image',
             'title' => 'required|min:2|max:80',
-            'content' => 'required|min:2'
+            'content' => 'required|min:2',
+            'category' => 'required'
         ]);
 
         $title = $request->input('title');
@@ -21,6 +22,7 @@ class AddPost extends Controller
         $fileName = time().$request->file('picture')->getClientOriginalName();
         $current_timestamp = time();
         $current_date_time = date('Y-m-d H:i:s', $current_timestamp);
+        $category = $request->input('category');
 
         $post = new Posts;
         if (auth()->user()->username == 'admin') {
@@ -32,6 +34,7 @@ class AddPost extends Controller
         $post->title = $title;
         $post->content = $content;
         $post->picture = 'storage/pictures/' . $fileName;
+        $post->category = $category;
         $post->created_at = $current_date_time;
         $addPostSuccess = $post->save();
 

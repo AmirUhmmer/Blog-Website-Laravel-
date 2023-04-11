@@ -30,8 +30,8 @@
                 </div>
                     
                 <div>
-                    <a href="{{ url('index') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
-                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a>
+                    <a href="{{ url('browse') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
+                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
                 </div>
 
                 <div>
@@ -55,8 +55,8 @@
                 </div>
 
                 <div>
-                    <img src="illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
+                    <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
     
     
     <div id="postCaptionContent" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] font-extrabold md:text-xl">
-        <span class="">POSTS</span>
+        <span class="">{{ $category }}s</span>
     </div>
 
     <div id="postCaptionloader" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] hidden">
@@ -89,13 +89,18 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a class="">
-                    <img src="{{$post->picture}}" class="w-full max-h-[600px] object-cover rounded-t-lg">
+                    <img src="../{{$post->picture}}" class="w-full max-h-[600px] object-cover rounded-t-lg">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title}}</a>
-                    <p href="#" class="text-sm pb-3">
-                        By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ substr($post->created_at, 0, 10)}}
-                    </p>
+                    <div class="w-fit h-fit border-2 border-gray-700 rounded-md hover:cursor-pointer hover:bg-gray-700">
+                        <a class="p-3">
+                            {{$post->category}}
+                        </a>
+                    </div>
+                        <p href="" class="text-sm pt-3 pb-3">
+                            By <a href="" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ substr($post->created_at, 0, 10)}}
+                        </p>              
                     <a  class="pb-6 text-justify">{{ substr($post->content, 0, 300)}}...</a>
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-solid fa-arrow-right fa-fade"></i></a>
                 </div>
@@ -105,7 +110,7 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a class="">
-                    <img src="illus/empty.jpg" class="w-full max-h-[600px] object-cover rounded-t-lg">
+                    <img src="../illus/empty.jpg" class="w-full max-h-[600px] object-cover rounded-t-lg">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                     <a class="text-3xl font-bold hover:text-gray-700 pb-4">Wow, this seems to be quite empty.</a>
@@ -116,6 +121,11 @@
                          and we encourage you to join our community and share yours with others. By signing up, you can become a valuable contributor 
                          to our community and help us create a platform where people can share their unique experiences, 
                         insights, and perspectives. We believe that everyone's story is worth telling, and we look forward to hearing yours.</a>
+                    <div class="flex">
+                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i>
+                        <a href="{{ url('browse') }}" class="uppercase text-gray-800 dark:text-white 
+                            dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
+                    </div> 
                 </div>
             </article>
         @endif
@@ -318,9 +328,9 @@
 
     </footer>
 
-    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
     <script type="text/javascript" src="../js/loaders.js"></script>
-    <script type="text/javascript" src="js/headers.js"></script>
+    <script type="text/javascript" src="../js/headers.js"></script>
     <script>postsLoader();</script>
 </body>
 </html>

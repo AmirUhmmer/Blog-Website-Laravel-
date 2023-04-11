@@ -30,27 +30,26 @@ Route::get('/', [HomeController::class, 'IndexContent'], function () {
     return view('index');
 });
 
-
 Route::get('/index', [HomeController::class, 'IndexContent'], function () {
     return view('index');
 });
 
-Route::get('/post', [AllPost::class, 'DisplayAllPost'], function () {
-});
+Route::get('/browse', [AllPost::class, 'CategoriesBrowse']);
+
+Route::get('/blogs/{category}', [AllPost::class, 'DisplayCategoriesPost'], function () {
+    return view('post')->with('category');
+})->name('blogs');
+
+// Route::get('/post', [AllPost::class, 'DisplayAllPost'], function () {
+// });
 
 Route::get('/login', function() {
-    // if(session('username') != null){
-    //     return redirect('/index');
-    // }
     return view('login');
 })->middleware('guest')->name('login');
 
 Route::post('loginUser', [AuthController::class, 'login']);
 
 Route::get('/signup', function() {
-    // if(session('username') != null){
-    //     return redirect('/index');
-    // }
     return view('signup');
 })->name('signup')->middleware('guest');
 

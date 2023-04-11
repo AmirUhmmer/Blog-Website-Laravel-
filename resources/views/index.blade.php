@@ -40,7 +40,7 @@
                 </div>
                     
                 <div>
-                    <a href="{{ url('post') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
+                    <a href="{{ url('browse') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
                      hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
                 </div>
 
@@ -151,6 +151,7 @@
 
     <div id="indexCaptionLoader1" class="ml-5 md:ml-60 h-5 bg-gray-300 rounded-full dark:bg-gray-600 w-40 animate-pulse hidden"></div>
 
+    {{-- CARDS --}}
     <div id="indexCardContent">
         <div class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
             @if($data->count())
@@ -160,10 +161,16 @@
                         <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
                         <div class="p-5 dark:bg-card_dark">
                             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{substr($post->title, 0, 53)}}</h5>
-                            <p class="font-normal text-gray-700 text-justify mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
+                            <div class="w-fit h-fit border-2 border-gray-900 dark:border-gray-700 rounded-md transition-all duration-150
+                             hover:cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-700">
+                                <a class="p-3">
+                                    {{$post->category}}
+                                </a>
+                            </div>
+                            <p class="pt-2 font-normal text-gray-700 text-justify mb-3 dark:text-whish">{{substr($post->content, 0, 300)}}... </p>
 
                                 <a href="{{ route('full_story', ['post_id' => $post->id]) }}" 
-                                    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
+                                    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4  transition-all duration-150
                                     focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
                                     Read more
                                 </a>

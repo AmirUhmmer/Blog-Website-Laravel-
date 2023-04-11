@@ -160,7 +160,8 @@
                                                 data-idEdit="{{ $post->id }}" 
                                                 data-titleEdit="{{ $post->title }}" 
                                                 data-contentEdit="{{ $post->content }}" 
-                                                data-pictureEdit="{{ $post->picture }}">
+                                                data-pictureEdit="{{ $post->picture }}"
+                                                data-categoryEdit="{{ $post->category }}" >
                                                 Edit
                                                 </a>
                                                 
