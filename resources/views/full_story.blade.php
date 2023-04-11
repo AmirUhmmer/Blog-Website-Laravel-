@@ -20,7 +20,7 @@
 
     <header id="header" class="fixed top-0 translate-y-0 transform transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div id="postFullHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="postFullHeaderContent" class="w-screen font-mono text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -31,7 +31,7 @@
                 </div>
                     
                 <div>
-                    <a href="{{ url('post') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
+                    <a href="{{ url('browse') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
                      hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
                 </div>
 
@@ -86,17 +86,18 @@
                     </a>
                     <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                         <a class="text-3xl font-bold pb-4">{{ $Story->title}}</a>
-                        <div class="w-fit h-fit border-2 border-gray-700 rounded-md hover:cursor-pointer hover:bg-gray-700">
-                            <a class="p-3">
+                        <div class="w-fit h-fit border-2 border-gray-900 dark:border-gray-700 rounded-md transition-all duration-150
+                             hover:cursor-pointer hover:bg-gray-900 hover:text-whish dark:hover:text-whish dark:hover:bg-gray-700">
+                            <a href="{{ route('blogs', ['category' => $Story->category]) }}" class="p-3">
                                 {{$Story->category}}
                             </a>
                         </div>
-                        <p href="#" class="text-sm pb-3">
+                        <p href="#" class="text-sm pt-3 pb-3">
                             By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ substr($Story->created_at, 0, 10)}}
                         </p>
                         <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
                         <div class="flex">
-                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ route('blogs', ['category' => $Story->category]) }}" 
+                        <i class="fa fa-arrow-left pt-[3px] mr-2"></i><a href="{{ route('blogs', ['category' => 'All Blog']) }}" 
                             class="uppercase text-gray-800 dark:text-white 
                         dark:hover:text-gray-300 hover:text-black">Back to Browsing </a>
                         </div>   

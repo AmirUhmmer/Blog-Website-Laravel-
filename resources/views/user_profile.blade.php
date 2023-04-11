@@ -26,7 +26,7 @@
 
     <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div id="profileHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="profileHeaderContent" class="w-screen font-mono text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -159,7 +159,8 @@
                                                 data-idEdit="{{ $post->id }}" 
                                                 data-titleEdit="{{ $post->title }}" 
                                                 data-contentEdit="{{ $post->content }}" 
-                                                data-pictureEdit="{{ $post->picture }}">
+                                                data-pictureEdit="{{ $post->picture }}"
+                                                data-categoryEdit="{{ $post->category }}" >
                                                 Edit
                                             </a>
                                             <a onclick="deleteButton(this)" class="font-medium hover:cursor-pointer text-pink_red hover:underline"

@@ -19,7 +19,7 @@
             dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
     <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
     bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div id="postHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="postHeaderContent" class="w-screen font-mono text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -93,8 +93,9 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6 dark:bg-card_dark rounded-b-lg">
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title}}</a>
-                    <div class="w-fit h-fit border-2 border-gray-700 rounded-md hover:cursor-pointer hover:bg-gray-700">
-                        <a class="p-3">
+                    <div class="w-fit h-fit border-2 border-gray-900 dark:border-gray-700 rounded-md transition-all duration-150
+                             hover:cursor-pointer hover:bg-gray-900 hover:text-whish dark:hover:text-whish dark:hover:bg-gray-700">
+                        <a href="{{ route('blogs', ['category' => $post->category]) }}" class="p-3">
                             {{$post->category}}
                         </a>
                     </div>

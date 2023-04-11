@@ -13,7 +13,6 @@
     />
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
-    {{-- <link href="{{ asset('../resources/css/app.css') }}" rel="stylesheet"> --}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('illus/quill.png') }}">
 </head>
 <body class="font-sans font-bold min-h-screen dark:bg-main_dark dark:text-whish 
@@ -29,7 +28,7 @@
     
     <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
      bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div id="headerContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="headerContent" class="w-screen font-mono text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -156,14 +155,14 @@
         <div class="flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
             @if($data->count())
                 @foreach ($data as $post)       
-                <div class="w-11/12 tb:w-fit mx-auto lt:min-w-[384px] mb:min-h-[342px]">
+                <div class="w-11/12 tb:w-fit mx-auto tb:min-w-[384px] mb:min-h-[342px]">
                     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
                         <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$post->picture}}" alt="">
                         <div class="p-5 dark:bg-card_dark">
                             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{substr($post->title, 0, 53)}}</h5>
                             <div class="w-fit h-fit border-2 border-gray-900 dark:border-gray-700 rounded-md transition-all duration-150
-                             hover:cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-700">
-                                <a class="p-3">
+                             hover:cursor-pointer hover:bg-gray-900 hover:text-whish dark:hover:text-whish dark:hover:bg-gray-700">
+                                <a href="{{ route('blogs', ['category' => $post->category]) }}" class="p-3">
                                     {{$post->category}}
                                 </a>
                             </div>

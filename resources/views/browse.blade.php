@@ -19,7 +19,7 @@
             dark:scrollbar-thumb-gray-300 dark:scrollbar-track-card_dark">
     <header id="header" class="fixed top-0 transform translate-y-0 transition-transform duration-300 ease-in-out
     bg-white dark:bg-main_dark border-gray-300 border-b h-20 flex w-full justify-between px-4 font-sans font-bold z-10">
-        <div id="postHeaderContent" class="w-screen font-mono md:text-2xl text-sm tb:text-lg flex items-center">
+        <div id="postHeaderContent" class="w-screen font-mono text-sm tb:text-lg flex items-center">
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
@@ -83,7 +83,7 @@
 
     <div class="pt-10 flex flex-wrap gap-1 md:w-10/12 md:mx-36 md:pl-20 pb-1"> 
         @foreach($categories as $category)
-            <div class="w-11/12 tb:w-fit mx-auto lt:min-w-[384px] mb:min-h-[342px]">
+            <div class="w-11/12 tb:w-fit mx-auto tb:min-w-[384px] mb:min-h-[342px]">
                 <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
                     <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="{{$category->image}}" alt="">
                     <div class="p-5 dark:bg-card_dark">
