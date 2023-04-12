@@ -18,7 +18,9 @@ class AllPost extends Controller
                 $category->setAttribute('StoriesCount', $StoriesCount);
             }
             else{
-                $Stories = Posts::where('category', $category->category)->get();
+                $Stories = Posts::where('deleted', '0')
+                                ->where('category', $category->category)
+                                ->get();
                 $StoriesCount = count($Stories);
                 $category->setAttribute('StoriesCount', $StoriesCount);
             }
@@ -28,16 +30,23 @@ class AllPost extends Controller
     }
 
     public function DisplayCategoriesPost($category){
-        if($category == 'All Blog'){
-            $CategoriesPost = Posts::where('deleted', '0')
-                            ->orderBy('created_at', 'desc')
-                            ->paginate(3);
+        $categoryCheck = Posts::where('category', $category);
+        if (!$categoryCheck->exists()) {
+            //if $category does not exist in the "category" column of the "Posts" table
+            if($category == 'All Blog'){
+                $CategoriesPost = Posts::where('deleted', '0')
+                                        ->orderBy('created_at', 'desc')
+                                        ->paginate(3);
+            }
+            else{
+                return view('errors.404');
+            }
         }
         else{
             $CategoriesPost = Posts::where('deleted', '0')
-                            ->where('category', $category)
-                            ->orderBy('created_at', 'desc')
-                            ->paginate(3);
+                                    ->where('category', $category)
+                                    ->orderBy('created_at', 'desc')
+                                    ->paginate(3);
         }
         
         return view('post', ['postData' => $CategoriesPost], ['category' => $category]);

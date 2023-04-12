@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
@@ -24,40 +25,117 @@
             <div class="flex">
                 <div>
                     <a href={{ url('index') }}>
-                        <span class="ml-5 tb:ml-16 lt:ml-48 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
+                        <span class="ml-5 tb:ml-16 md:ml-56 hover:cursor-pointer decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
                         Write <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">Stuff</span>
                         </span>
                     </a>
                 </div>
                     
-                <div>
-                    <a href="{{ url('browse') }}" class="absolute left-[220px] sm:left-[240px] tb:left-[550px] lt:left-[900px] md:left-[1400px]
-                     hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Browse</a>
+                <div class="pl-4 absolute right-0 mr-5 tb:mr-16 -mt-2 tb:-mt-1 flex lt:hidden">
+                    <button id="dropdownHoverButton"
+                    data-dropdown-toggle="dropdownHover" 
+                    data-dropdown-trigger="hover" 
+                    class="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 
+                    font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex 
+                    items-center bg-gray-800"
+                    type="button">Menu
+
+                    <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                    <svg class="w-4 h-4 ml-2" id="Layer_1" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,
+                    10,4,10z M28,14H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,
+                    14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,22,28,22z"/></svg>
+                    
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHover" class="z-10 hidden w-screen  bg-white divide-y divide-gray-100 shadow dark:bg-card_dark">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                        <li>
+                           @if (auth()->user())
+                                @if (auth()->user()->username != 'admin')
+                                    <a href="{{ url('user_profile') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {{ auth()->user()->username }}
+                                    </a>
+                                    <a href="{{ url('logout') }}" id="userHeader" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Logout
+                                    </a>
+                                @else
+                                    <a href="{{ url('admin') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {{ auth()->user()->username }}
+                                    </a>
+                                    <a href="{{ url('logout') }}" id="userHeader" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Logout
+                                    </a>
+                                @endif  
+                            @else
+                                <a href="{{ url('login') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Login</a>
+                            @endif
+                        </li>
+                        <li>
+                            <a href="{{ url('blogs/All Blog') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All Blog</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('browse') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Categories</a>
+                        </li>
+                        <li>
+                            <a id="moonMobile" onclick="toggleDark()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dark Mode</a>
+                            <a id="sunMobile" onclick="toggleDark()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Light Mode</a>
+                        </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div>
-                @if (auth()->user())
-                    @if (auth()->user()->username != 'admin')
-                        <a href="/user_profile" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
-                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                            {{ auth()->user()->username }}
-                        </a>
+                
+
+                <div class="pl-4 absolute right-0 pr-2 lt:flex hidden">
+
+                    <div class="mr-7">
+                        <form>   
+                            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" 
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path 
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                </div>
+                                <input type="search" id="default-search" class="block tbl:-mt-3 ltl:-mt-5 md:-mt-3 w-[400px] p-4 pl-10 
+                                text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+                                focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
+                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                placeholder="Search Titles, Authors, Categories..." required>
+                                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 
+                                bg-gray-800 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        <a href="{{ url('blogs/All Blog') }}" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">All Blog</a>
+                    </div>
+
+                    <div>
+                        <a href="{{ url('browse') }}" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Categories</a>
+                    </div>
+    
+                    <div>
+                    @if (auth()->user())
+                        @if (auth()->user()->username != 'admin')
+                            <a href="/user_profile" id="userHeader" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                                {{ auth()->user()->username }}
+                            </a>
+                        @else
+                            <a href="/admin" id="userHeader" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
+                                {{ auth()->user()->username }}
+                            </a>
+                        @endif
+                            
                     @else
-                        <a href="/admin" id="userHeader" class="absolute left-[285px] sm:left-[310px] tb:left-[650px] md:left-[1540px] lt:left-[1000px] 
-                        hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">
-                            {{ auth()->user()->username }}
-                        </a>
+                        <a href="{{ url('login') }}" id="userHeader" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
                     @endif
-                        
-                @else
-                    <a href="{{ url('login') }}" id="userHeader" class="absolute left-[285px] sm:left-[310px] md:left-[1540px] lt:left-[1000px] tb:left-[650px] 
-                    hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Login</a>
-                @endif
-                </div>
-
-                <div>
-                    <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
-                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark absolute right-0 pr-2 lt:pr-44 md:pr-56 h-5 tb:h-8 md:h-9 hover:cursor-pointer">
+                    </div>
+                    <img src="../illus/moon.png" id="moon" onclick="toggleDark()" class="hidden toggle-dark tb:pr-16 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
+                    <img src="../illus/sun.png" id="sun" onclick="toggleDark()" class="hidden toggle-dark tb:pr-16 md:pr-56 h-5 tb:h-8 md:h-8 hover:cursor-pointer">
                 </div>
             </div>
         </div>
@@ -314,7 +392,7 @@
                   </div>
 
                   <div class="flex items-center">
-                    <a href="{{ url('post') }}" class="text-xs tb:text-sm pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a>
+                    <a href="{{ url('browse') }}" class="text-xs tb:text-sm pr-3 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Stories</a>
                   </div>
 
                   <div class="flex items-center">
@@ -334,5 +412,6 @@
     <script type="text/javascript" src="../js/loaders.js"></script>
     <script type="text/javascript" src="../js/headers.js"></script>
     <script>fullStoryLoader();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>
 </html>

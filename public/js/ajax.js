@@ -38,10 +38,14 @@ function toggleDark(){
     localStorage.setItem('darkMode', 'on');
     $('#moon').hide();
     $('#sun').show();
+    $('#moonMobile').hide();
+    $('#sunMobile').show();
   } else {
     localStorage.setItem('darkMode', 'off');
     $('#moon').show();
     $('#sun').hide();
+    $('#moonMobile').show();
+    $('#sunMobile').hide();
   }
 
 }
@@ -53,10 +57,14 @@ function toggleDark(){
       htmlElement.classList.add('dark');
       $('#moon').hide();
       $('#sun').show();
+      $('#moonMobile').hide();
+      $('#sunMobile').show();
     }
     else {
         $('#moon').show();
         $('#sun').hide();
+        $('#moonMobile').show();
+        $('#sunMobile').hide();
     }
     
   });
