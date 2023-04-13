@@ -30,25 +30,39 @@ class AllPost extends Controller
     }
 
     public function DisplayCategoriesPost($category){
-        $categoryCheck = Posts::where('category', $category);
+        $categoryCheck = Categories::where('category', $category);
+        $authorCheck = Posts::where('username', $category)
+                              ->where('deleted', '0');
         if (!$categoryCheck->exists()) {
             //if $category does not exist in the "category" column of the "Posts" table
+                if (!$authorCheck->exists()) {
+                    return view('errors.404');
+                }
+                else{
+                    //for users who searched the author
+                    $CategoriesPost = Posts::where('deleted', '0')
+                                    ->where('username', $category)
+                                    ->orderBy('created_at', 'desc')
+                                    ->paginate(3);
+                    $category = $category."'s blog";
+                }
+        }
+        else{
             if($category == 'All Blog'){
                 $CategoriesPost = Posts::where('deleted', '0')
                                         ->orderBy('created_at', 'desc')
                                         ->paginate(3);
             }
             else{
-                return view('errors.404');
-            }
-        }
-        else{
-            $CategoriesPost = Posts::where('deleted', '0')
+                $CategoriesPost = Posts::where('deleted', '0')
                                     ->where('category', $category)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(3);
+            }
         }
         
         return view('post', ['postData' => $CategoriesPost], ['category' => $category]);
     }
 }
+
+

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchBar;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShowPostSnippets;
 use App\Http\Controllers\AllPost;
@@ -34,14 +35,13 @@ Route::get('/index', [HomeController::class, 'IndexContent'], function () {
     return view('index');
 });
 
-Route::get('/browse', [AllPost::class, 'CategoriesBrowse']);
+Route::get('/search', [SearchBar::class, 'Autofill'])->name('search');
+
+Route::get('/browse', [AllPost::class, 'CategoriesBrowse'])->name('browse');
 
 Route::get('/blogs/{category}', [AllPost::class, 'DisplayCategoriesPost'], function () {
     return view('post')->with('category');
 })->name('blogs');
-
-// Route::get('/post', [AllPost::class, 'DisplayAllPost'], function () {
-// });
 
 Route::get('/login', function() {
     return view('login');
