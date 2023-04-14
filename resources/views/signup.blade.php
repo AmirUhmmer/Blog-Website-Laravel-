@@ -16,11 +16,14 @@
 <body class="w-screen h-screen bg-card_dark dark:bg-main_dark">
 
     {{ $display = (isset($script) ? $script : null)}}
-
-    <div class="fixed pl-5 pt-14 tb:pt-52 tb:pl-44 tbl:pl-72 lt:pl-[340px] md:pt-60 md:pl-[580px] text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
+    {{-- back button --}}
+    <div class="fixed pl-5 pt-14 tb:pt-52 lt:pt-40 tb:pl-44 tbl:pl-72 lt:pl-[420px] xl:pl-[340px] md:pt-60 md:pl-[580px]
+     text-white text-base hover:text-lg hover:cursor-pointer transition-all duration-150">
         <a href={{ url('index') }}>&lt- Home</a>
     </div>
-    <div class="pt-24 tb:pt-64 md:pt-72">
+
+    {{-- signup div --}}
+    <div class="pt-24 tb:pt-64 lt:pt-48 md:pt-72">
         <div class="container w-11/12 max-w-md mx-auto xl:max-w-3xl h-fit flex bg-white rounded-lg shadow overflow-hidden">
             <div class="w-full xl:w-1/2 p-8 dark:bg-card_dark">
                 <form action="insertUser" id="signup" method="POST">
@@ -98,7 +101,7 @@
     </div>
 
         
-    <script type="text/javascript" src="js/signup.js"></script>
+    {{-- <script type="text/javascript" src="js/signup.js"></script> --}}
     <script type="text/javascript" src="js/ajax.js"></script>
 </body>
 </html>

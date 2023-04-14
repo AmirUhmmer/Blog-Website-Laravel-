@@ -135,6 +135,25 @@
             </div>
         </div>
         
+        {{-- <div class="pl-9 tb:pl-28 lt:pl-60 pt-16">
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" 
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path 
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <input type="search" id="searchAdmin" class="block w-[270px] tb:w-[400px] p-4 pl-10 
+                text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+                focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
+                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                placeholder="Search Titles, Authors, Categories..." required>
+            </div>
+            <div id="searchResultAdmin" class="hidden -mt-1 w-[400px] bg-white divide-y divide-gray-100 shadow dark:bg-card_dark">
+                <ul id="searchResultList" class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                    
+                </ul>
+            </div>
+        </div> --}}
 
         <div id="userTable" class="pt-20">         
             <div class="mx-auto w-11/12 md:w-4/5 overflow-x-auto shadow-md rounded-lg  
@@ -179,12 +198,15 @@
                                 <th scope="col" class="px-6 py-3">
                                     Picture
                                 </th>
+                                <th scope="col" class="px-6 py-3 text-left hidden tb:table-cell">
+                                    Author
+                                </th>
                                 <th scope="col" class="px-6 py-3 text-left">
                                     Action
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="postTable">
                             @if($posts->count())
                                 @foreach($posts as $post)
                                     <tr class="bg-gray-50 border-b dark:bg-card_dark dark:border-card_dark hover:bg-whish dark:hover:bg-gray-800">
@@ -198,6 +220,9 @@
                                         <td class="px-6 tb:py-4">
                                             <img src="{{ $post->picture }}" class="h-[120px] mx-auto object-cover">
                                         </td>
+                                        <td class="px-6 tb:py-4 hidden tb:table-cell max-w-sm">
+                                            {{ $post->username }}
+                                        </td>
                                         <td class="px-6 tb:py-4">
                                             @if ($post->username == 'Write Stuff')
                                                 <a onclick="showEditPost(this)" class="font-medium hover:cursor-pointer text-blue-600 dark:text-blue-500 hover:underline pr-3" 
@@ -208,7 +233,11 @@
                                                 data-categoryEdit="{{ $post->category }}" >
                                                 Edit
                                                 </a>
-                                                
+                                            @else
+                                                <a href="{{ route('full_story', ['post_id' => $post->id]) }}"  
+                                                class="font-medium hover:cursor-pointer text-green-600 dark:text-green-600 hover:underline pr-3">
+                                                View
+                                                </a>
                                             @endif
                                             
                                             <a onclick="deleteButton(this)" class="font-medium hover:cursor-pointer text-pink_red hover:underline"
@@ -393,7 +422,7 @@
    
     <script type="text/javascript" src="js/headers.js"></script>
 
-    <script type="text/javascript" src="js/search.js"></script>
+    {{-- <script type="text/javascript" src="js/searchDashboard.js"></script> --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchBar;
+use App\Http\Controllers\SearchAdmin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShowPostSnippets;
 use App\Http\Controllers\AllPost;
@@ -62,6 +63,8 @@ Route::get('/full_story/{post_id}', [FullStoryController::class, 'DisplayFullSto
 Route::get('/user_profile', [userPosts::class, 'displayuserPosts'])->middleware('auth');
 
 Route::get('/admin', [userPosts::class, 'displayuserPostsAdmin'])->middleware('auth');
+
+Route::get('/searchAdmin', [searchAdmin::class, 'displaySearchAdmin'])->middleware('auth');
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 

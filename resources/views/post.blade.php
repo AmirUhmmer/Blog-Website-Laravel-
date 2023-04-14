@@ -153,8 +153,8 @@
     </header>
     
     
-    <div id="postCaptionContent" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] font-extrabold md:text-xl">
-        <span class="">{{ $category }}s</span>
+    <div id="postCaptionContent" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] font-extrabold md:text-4xl">
+        <span class="">{!! $category !!}</span>
     </div>
 
     <div id="postCaptionloader" class="pt-16 mt-7 ml-5 lt:pl-80 md:pl-[470px] hidden">
@@ -178,7 +178,7 @@
                         </a>
                     </div>
                         <p href="" class="text-sm pt-3 pb-3">
-                            By <a href="" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ substr($post->created_at, 0, 10)}}
+                            By <a href="{{ route('blogs', ['category' => $post->username]) }}" class="font-semibold hover:text-gray-800 ">{{ $post->username}}</a>, Published on {{ substr($post->created_at, 0, 10)}}
                         </p>              
                     <a  class="pb-6 text-justify">{{ substr($post->content, 0, 300)}}...</a>
                     <a href="{{ route('full_story', ['post_id' => $post->id]) }}" class="uppercase text-gray-800 dark:text-white dark:hover:text-whish hover:text-black">Continue Reading <i class="fa-solid fa-arrow-right fa-fade"></i></a>
@@ -346,7 +346,7 @@
     
 
 
-    <img src="dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
+    <img src="../dp/up-arrows.png" onclick="scrollToTop()" class="fixed bottom-5 right-5 px-4 py-2 w-20 md:w-24 hover:cursor-pointer hover:animate-bounce">
 
     <footer class="bottom-0 w-full pb-0 mb-0 h-80 tb:h-64 bg-transparent dark:bg-card_dark border-t-2 border-gray-300 dark:border-t-0">
         <div class="w-full flex flex-wrap pb-5 md:pb-7">

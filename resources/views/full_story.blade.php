@@ -170,8 +170,8 @@
                                 {{$Story->category}}
                             </a>
                         </div>
-                        <p href="#" class="text-sm pt-3 pb-3">
-                            By <a href="#" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ substr($Story->created_at, 0, 10)}}
+                        <p href="" class="text-sm pt-3 pb-3">
+                            By <a href="{{ route('blogs', ['category' => $Story->username]) }}" class="font-semibold hover:text-gray-800 ">{{ $Story->username}}</a>, Published on {{ substr($Story->created_at, 0, 10)}}
                         </p>
                         <a  class="pb-6 text-justify">{!! nl2br($Story->content) !!}</a>
                         <div class="flex">

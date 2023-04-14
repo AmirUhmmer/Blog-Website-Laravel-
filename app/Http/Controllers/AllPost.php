@@ -44,7 +44,11 @@ class AllPost extends Controller
                                     ->where('username', $category)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(3);
-                    $category = $category."'s blog";
+                    // $category = $category."'s blog";
+
+                   $category = '<span class=" decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
+                    '.$category.'&#39s <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">blogs</span>
+                    </span>';
                 }
         }
         else{
@@ -52,12 +56,19 @@ class AllPost extends Controller
                 $CategoriesPost = Posts::where('deleted', '0')
                                         ->orderBy('created_at', 'desc')
                                         ->paginate(3);
+                $category = '<span class=" decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
+                    '.substr($category, 0, -5).' <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">blogs</span>
+                    </span>';
+                    
             }
             else{
                 $CategoriesPost = Posts::where('deleted', '0')
                                     ->where('category', $category)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(3);
+                $category = '<span class=" decoration-light_blue hover:text-pink_red hover:underline transition-all duration-150">
+                    '.substr($category, 0, -5).' <span class="text-pink_red underline decoration-light_blue hover:text-black dark:hover:text-white hover:no-underline">blogs</span>
+                    </span>';
             }
         }
         

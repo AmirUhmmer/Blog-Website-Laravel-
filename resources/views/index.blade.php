@@ -427,7 +427,7 @@
 
 
     <div class="tb:w-10/12 tb:pl-10 tb:pr-44 md:pr-0 md:mx-36 md:pl-20 pb-14">
-        <div class="w-full tb:w-5/6 md:w-1/4 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
+        <div class="w-full tb:w-5/6 md:w-1/3 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
             {{ $data->links('vendor.pagination.tailwind') }}
         </div>
     </div>

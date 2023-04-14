@@ -13,8 +13,8 @@ module.exports = {
         tb: '760px',
         tbl:  '900px',
         lt:  '1250px',
-        md: '1700px',
         xl: '1440px',
+        md: '1700px',
       },
       fontFamily: {
         'sans': ['Poppins', 'sans-serif'],
