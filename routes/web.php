@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchBar;
+use App\Http\Controllers\SearchPage;
 use App\Http\Controllers\SearchAdmin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShowPostSnippets;
@@ -38,6 +39,10 @@ Route::get('/index', [HomeController::class, 'IndexContent'], function () {
 
 Route::get('/search', [SearchBar::class, 'Autofill'])->name('search');
 
+Route::get('/searchPage', [SearchPage::class, 'searchPageResults'], function() {
+    return view('search');
+});
+
 Route::get('/browse', [AllPost::class, 'CategoriesBrowse'])->name('browse');
 
 Route::get('/blogs/{category}', [AllPost::class, 'DisplayCategoriesPost'], function () {
@@ -64,7 +69,7 @@ Route::get('/user_profile', [userPosts::class, 'displayuserPosts'])->middleware(
 
 Route::get('/admin', [userPosts::class, 'displayuserPostsAdmin'])->middleware('auth');
 
-Route::get('/searchAdmin', [searchAdmin::class, 'displaySearchAdmin'])->middleware('auth');
+// Route::get('/searchAdmin', [searchAdmin::class, 'displaySearchAdmin'])->middleware('auth');
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 

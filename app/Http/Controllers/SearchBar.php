@@ -18,7 +18,7 @@ class SearchBar extends Controller
             $query = $request->get('query');
 
             if($query != null){
-                $dataTitle = Posts::where('Title', 'like', '%'.$query.'%')
+                $dataTitle = Posts::where('title', 'like', '%'.$query.'%')
                                ->where('deleted', '0')
                                ->orderBy('created_at', 'desc')
                                ->get();

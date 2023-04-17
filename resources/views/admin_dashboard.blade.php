@@ -58,7 +58,7 @@
                     <div id="dropdownHover" class="z-10 hidden w-screen  bg-white divide-y divide-gray-100 shadow dark:bg-card_dark">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                         <li>
-                            <a href="{{ url('blogs/All Blog') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All Blog</a>
+                            <a href="{{ url('/') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Home</a>
                         </li>
                         <li>
                             <a href="{{ url('browse') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Categories</a>
@@ -81,11 +81,36 @@
                 <div class="pl-4 absolute right-0 pr-2 lt:flex hidden">
                     
                     <div>
-                        <a href="{{ url('blogs/All Blog') }}" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">All Blog</a>
+                        <a href="{{ url('/') }}" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Home</a>
                     </div>
 
-                    <div>
-                        <a href="{{ url('browse') }}" class="mr-7 hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Categories</a>
+                    <div class="mr-7 ">
+                        <a href="{{ url('browse') }}" class="hover:cursor-pointer hover:text-pink_red hover:underline decoration-light_blue">Categories</a>
+                        
+                        <button id="dropdownHoverButton" 
+                        data-dropdown-toggle="dropdownHoverCategories" 
+                        data-dropdown-trigger="hover" 
+                        class="focus:outline-none focus:ring-blue-300 rounded-lg px-1 py-1 text-center items-center
+                      dark:focus:ring-blue-800" type="button">
+                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownHoverCategories" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        @php
+                            $CATEGORIES = array('Business Blog', 'DIY craft Blog', 'Fashion and beauty Blog', 'Food Blog', 'Health and Fitness Blog',
+                        'Lifestyle Blog', 'Movie Blog', 'Music Blog', 'News Blog', 'Photography Blog', 'Political Blog', 'Sports Blog', 'Travel Blog', 'Other Blog');
+                        @endphp
+                            <ul class="py-2 dark:bg-card_dark text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                            <li>
+                                @foreach($CATEGORIES as $CATEGORY)
+                                <a href="{{ route('blogs', ['category' => $CATEGORY, 0, -5]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    {{ substr($CATEGORY, 0, -5) }}
+                                </a>
+                                @endforeach
+                            </li>
+                            </ul>
+                        </div>
                     </div>
     
                     <div>
