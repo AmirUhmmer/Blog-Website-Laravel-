@@ -159,26 +159,6 @@
                 <div class="h-10 bg-gray-200 rounded-lg dark:bg-gray-700 w-36"></div>
             </div>
         </div>
-        
-        {{-- <div class="pl-9 tb:pl-28 lt:pl-60 pt-16">
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" 
-                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path 
-                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-                <input type="search" id="searchAdmin" class="block w-[270px] tb:w-[400px] p-4 pl-10 
-                text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
-                focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
-                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                placeholder="Search Titles, Authors, Categories..." required>
-            </div>
-            <div id="searchResultAdmin" class="hidden -mt-1 w-[400px] bg-white divide-y divide-gray-100 shadow dark:bg-card_dark">
-                <ul id="searchResultList" class="py-2 text-sm text-gray-700 dark:text-gray-200">
-                    
-                </ul>
-            </div>
-        </div> --}}
 
         <div id="userTable" class="pt-20">         
             <div class="mx-auto w-11/12 md:w-4/5 overflow-x-auto shadow-md rounded-lg  
@@ -259,7 +239,7 @@
                                                 Edit
                                                 </a>
                                             @else
-                                                <a href="{{ route('full_story', ['post_id' => $post->id]) }}"  
+                                                <a href="{{ route('full_story', ['post_id' => $post->id]) }}"  target="blank" 
                                                 class="font-medium hover:cursor-pointer text-green-600 dark:text-green-600 hover:underline pr-3">
                                                 View
                                                 </a>
@@ -414,11 +394,11 @@
 
         </div>
 
-        <div id="pages" class="tb:w-10/12 tb:pl-10 tb:pr-44 md:pr-0 md:mx-36 md:pl-20 pb-10 pt-10">
-            <div class="w-full tb:w-5/6 md:w-1/4 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
-                {{ $posts->links('vendor.pagination.tailwind') }}
-            </div>
+    <div id="pages" class="pt-10 tb:w-10/12 tb:pl-10 tb:pr-44 md:pr-0 md:mx-36 md:pl-20 pb-14">
+        <div class="w-full tb:w-5/6 md:w-1/3 lt:w-2/4 flex-shrink-0 pl-5 pr-5 tb:pl-0 tb:pr-0">
+            {{ $posts->links('vendor.pagination.tailwind') }}
         </div>
+    </div>
         
         @extends('user_profile.edit_delete_form')
         @section('addForm')
@@ -446,8 +426,6 @@
     <script type="text/javascript">profileLoader();</script>
    
     <script type="text/javascript" src="js/headers.js"></script>
-
-    {{-- <script type="text/javascript" src="js/searchDashboard.js"></script> --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>

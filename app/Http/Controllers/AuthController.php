@@ -15,11 +15,11 @@ class AuthController extends Controller
             'username' => 'required|exists:users,username',
             'password' => 'required',
         ], [    
-            'username.exists' => 'The username does not exist',
+            'username.unique' => 'The username does not exist',
         ]);
-
-        $db_username =  Users::where('username', $credentials['username'])->first();
-
+        
+        $db_username =  Users::whereRaw('BINARY `username` = ?', [$credentials['username']])->first();
+        
         if($db_username && Hash::check($credentials['password'], $db_username->user_password)){
             auth()->login($db_username);
             Alert::success('Success Title', 'Success Message');
@@ -30,6 +30,7 @@ class AuthController extends Controller
                 'password' => 'The password is incorrect.',
             ]);
         }
+        
     }
 
     public function logout(Request $request){

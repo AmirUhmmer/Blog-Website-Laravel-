@@ -18,7 +18,7 @@ class SearchPage extends Controller
         })
         ->where('deleted', '0')
         ->orderBy('created_at', 'desc')
-        ->get();
+        ->paginate(8);
 
         return view('search', ['searchData' => $searchData], ['userSearched' => $querySearch]);
     }

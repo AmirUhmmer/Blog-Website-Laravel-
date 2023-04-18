@@ -1,8 +1,3 @@
-$(document).ready(function() {
-    var query ='';
-    searchDataAdmin(query);
-});
-
 $(document).on('keyup', '#searchAdmin', function(){
     var query =$("#searchAdmin").val();
     searchDataAdmin(query);
@@ -11,27 +6,17 @@ $(document).on('keyup', '#searchAdmin', function(){
 
 function searchDataAdmin(query){
     $.ajax({
-        url:'/searchAdmin',
+        url:'/admin',
         method:'GET',
         data:{query:query},
-        dataType:'json',
+        dataType:'html',
         success: function(data){
             $('#postTable tbody').empty();
             console.log(query);
-            alert(query);
-            // if(data.searchResult != null){
-            //     $('#searchResultList').html(data.searchResult);
-            // }
-            // else if(data.searchResultTitle != null){
-            //     $('#searchResultList').html(data.searchResultTitle);
-            // }
-            // else if(data.searchResultCategory != null){
-            //     $('#searchResultList').html(data.searchResultCategory);
-            // }
-            // else if(data.searchResultAuthor != null){
-            //     $('#searchResultList').html(data.searchResultAuthor);
-            // }
+            console.log(data);
+        },
+        error: function(){
+            console.log('error');
         }
-        
     });
 }

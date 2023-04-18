@@ -27,9 +27,6 @@ function scrollToTop() {
     }
 
 function toggleDark(){
-    
-    // const darkToggle = document.querySelector('.toggle-dark');
-    // document.documentElement.classList.toggle('dark');
 
   const htmlElement = document.documentElement;
   htmlElement.classList.toggle('dark');

@@ -69,8 +69,6 @@ Route::get('/user_profile', [userPosts::class, 'displayuserPosts'])->middleware(
 
 Route::get('/admin', [userPosts::class, 'displayuserPostsAdmin'])->middleware('auth');
 
-// Route::get('/searchAdmin', [searchAdmin::class, 'displaySearchAdmin'])->middleware('auth');
-
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::post('/addPost', [AddPost::class, 'AddPostDB'])->middleware('auth');

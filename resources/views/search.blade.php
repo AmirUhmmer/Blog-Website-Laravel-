@@ -174,18 +174,13 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="search" id="search" name="search" autocomplete="off" class="block w-[382px] p-4 pl-10 
+            <input type="search" id="search" name="search" autocomplete="off" class="block w-[300px] tb:w-[382px] p-4 pl-10 
             text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
             focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
             dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             placeholder="Search Titles, Authors, Categories..." required>
             </div>
         </form>
-        {{-- <div id="searchResult" class="hidden -mt-1 w-[400px] bg-white divide-y divide-gray-100 shadow dark:bg-card_dark">
-            <ul id="searchResultList" class="py-2 text-sm text-gray-700 dark:text-gray-200">
-                
-            </ul>
-        </div> --}}
     </div>
       
     <div class="flex mt-16 text-center justify-center text-xl">
@@ -193,15 +188,6 @@
     </div>
 
     <div class="flex flex-wrap pb-1 mt-5"> 
-        {{-- <div class="w-11/12 tb:w-fit mx-auto">
-            <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 dark:border-card_dark">
-                <img class="rounded-t-lg max-h-[382px] min-h-[382px] w-full object-cover" src="illus/empty.jpg" alt="">
-                <div class="p-5 dark:bg-card_dark">
-                    <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">Wow, this seems to be quite empty.</h5>
-                    <p class="font-normal text-gray-700 mb-3 dark:text-whish"></p>
-                </div>
-            </div>
-        </div> --}}
         @if($searchData->count())
                 @foreach ($searchData as $post)       
                 <div class="w-11/12 tb:w-fit mx-auto tb:min-w-[384px] mb:min-h-[342px]">
@@ -239,6 +225,10 @@
                     </div>
                 </div>
         @endif
+    </div>
+
+    <div class="mx-auto justify-center text-center w-full tb:w-10/12 lt:w-1/3 pt-5 pb-14">
+        {{ $searchData->links('vendor.pagination.tailwind') }}
     </div>
 
     <footer class="w-full pb-0 h-80 tb:h-64 bg-transparent dark:bg-card_dark border-t-2 border-gray-300 dark:border-t-0">
